@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.adriano.listooo",
+      "sha256_cert_fingerprints": [
+        "6F:C9:DD:EA:4A:5D:ED:65:B9:5D:0D:E3:6D:1D:E5:97:9F:53:D8:76:E9:C0:ED:03:88:73:42:89:FB:8A:C2:15",
+        "BE:A9:CD:6D:DA:93:D9:EA:97:E0:7B:5D:8B:68:82:6A:05:AF:93:FA:32:A3:BB:F7:8F:3B:8B:D7:90:BF:08:7F"
+      ]
+    }
+  }
+]

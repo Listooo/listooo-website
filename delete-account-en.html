@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Light + Dark -->
+    <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
+
+    <title>Listooo – Delete Account</title>
+
+    <style>
+        :root{
+            --bg:#F7F8FA;
+            --text:#111;
+            --card:#fff;
+            --border:#E5E7EB;
+            --accent:#34C759;
+        }
+
+        @media (prefers-color-scheme: dark){
+            :root{
+                --bg:#232323;
+                --text:#fff;
+                --card:#2b2b2b;
+                --border:#3a3a3a;
+            }
+        }
+
+        body{
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+            padding:24px;
+            background:var(--bg);
+            color:var(--text);
+            margin:0;
+        }
+
+        .card{
+            max-width:600px;
+            margin:0 auto;
+            background:var(--card);
+            border:1px solid var(--border);
+            border-radius:16px;
+            padding:20px;
+        }
+
+        h1{margin-top:0}
+
+        a{
+            color:var(--accent);
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        a:hover{
+            text-decoration:underline;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:16px;
+            padding:12px 16px;
+            border-radius:12px;
+            background:var(--accent);
+            color:#0b1a10;
+            text-decoration:none;
+            font-weight:700;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Listooo – Delete Account</h1>
+
+    <p>You can delete your account at any time.</p>
+
+    <p>
+        Simply send an email to:<br>
+        <a href="mailto:support@listooo.ch?subject=Delete%20account%20Listooo&body=Hello,%0A%0AI%20would%20like%20to%20delete%20my%20Listooo%20account.%0A%0AThank%20you.">
+            support@listooo.ch
+        </a>
+    </p>
+
+    <!-- OPTIONAL: Button -->
+    <a class="btn" href="mailto:support@listooo.ch?subject=Delete%20account%20Listooo&body=Hello,%0A%0AI%20would%20like%20to%20delete%20my%20Listooo%20account.%0A%0AThank%20you.">
+        📧 Delete account via email
+    </a>
+
+    <p style="margin-top:18px;">
+        We will delete your account and all associated data within 30 days.<br>
+        In many cases, deletion is completed earlier.
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impressum – Listooo</title>
+  <meta name="description" content="Impressum für die Android-App Listooo und die Website listooo.ch" />
+
+  <!-- ✅ Light + Dark -->
+  <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+  <style>
+    :root{
+      --bg:#F7F8FA;
+      --card:#FFFFFF;
+      --text:#111111;
+      --muted:#6B7280;
+      --accent:#34C759;
+      --border:#E5E7EB;
+      --link:#34C759;
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#232323;
+        --card:#2b2b2b;
+        --text:#ffffff;
+        --muted:#b9b9b9;
+        --border:#3a3a3a;
+        --link:#9fe7b5;
+      }
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:24px 16px 56px;
+    }
+
+    header{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .logo{
+      width:44px;height:44px;
+      border-radius:12px;
+      background:var(--card);
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo img{
+      width:30px;height:30px;
+      object-fit:contain;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding-bottom:6px;
+    }
+
+    .navbtn{
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,0.03);
+      color:var(--text);
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .navbtn.active{
+      background:var(--accent);
+      color:#0b1a10;
+      border:none;
+      font-weight:800;
+    }
+
+    .hero{
+      background:linear-gradient(180deg, rgba(52,199,89,0.10), rgba(52,199,89,0.00));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .hero h1{margin:0 0 8px; font-size:28px}
+    .meta{color:var(--muted); font-size:14px; white-space:pre-line; margin:0}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      margin-top:12px;
+    }
+
+    .card h2{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; white-space:pre-line}
+
+    footer{
+      margin-top:22px;
+      padding-top:16px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px 16px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:var(--muted);
+    }
+
+    .footer-links a.active{
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    code{
+      background:rgba(0,0,0,0.05);
+      border:1px solid var(--border);
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    @media (prefers-color-scheme: dark){
+      code{background:#1f1f1f;}
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="/index-de.html">
+      <div class="logo">
+        <img src="/assets/logo.png">
+      </div>
+      <div>
+        <div style="font-weight:800">Listooo</div>
+        <div style="color:var(--muted); font-size:13px;">Impressum</div>
+      </div>
+    </a>
+
+    <nav class="navlinks">
+      <a class="navbtn" href="/index-de.html">Start</a>
+      <a class="navbtn" href="/privacy-de.html">Datenschutz</a>
+      <a class="navbtn" href="/terms-de.html">Nutzungsbedingungen</a>
+      <a class="navbtn active" href="/impressum-de.html">Impressum</a>
+      <a class="navbtn" href="/delete-account-de.html">Konto löschen</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Impressum</h1>
+    <p class="meta">Gültig für die Android-App „Listooo“ (<code>com.adriano.listooo</code>)
+und die Website <a href="https://listooo.ch" target="_blank">listooo.ch</a>.</p>
+  </section>
+
+  <div class="card">
+    <h2>Anbieter / Verantwortlich</h2>
+    <p>Adriano Gennuso
+E-Mail: <a href="mailto:support@listooo.ch">support@listooo.ch</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Haftungsausschluss</h2>
+    <p>Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt.
+Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.
+
+Für Inhalte externer Links sind ausschliesslich deren Betreiber verantwortlich.</p>
+  </div>
+
+  <div class="card">
+    <h2>Urheberrechte</h2>
+    <p>Die Inhalte und Werke auf dieser Website unterliegen dem Urheberrecht.
+Eine Verwendung ausserhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung.</p>
+  </div>
+
+  <div class="card">
+    <h2>Markenhinweis</h2>
+    <p>Google Play und das Google Play-Logo sind Marken von Google LLC.
+Alle weiteren genannten Marken gehören ihren jeweiligen Inhabern.</p>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> Listooo</div>
+
+    <div class="footer-links">
+      <a href="/privacy-de.html">Datenschutz</a>
+      <a href="/terms-de.html">Nutzungsbedingungen</a>
+      <a href="/impressum-de.html" class="active">Impressum</a>
+      <a href="/delete-account-de.html">Konto löschen</a>
+      <a href="mailto:support@listooo.ch">support@listooo.ch</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Light + Dark -->
+    <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
+
+    <title>Listooo – Supprimer le compte</title>
+
+    <style>
+        :root{
+            --bg:#F7F8FA;
+            --text:#111;
+            --card:#fff;
+            --border:#E5E7EB;
+            --accent:#34C759;
+        }
+
+        @media (prefers-color-scheme: dark){
+            :root{
+                --bg:#232323;
+                --text:#fff;
+                --card:#2b2b2b;
+                --border:#3a3a3a;
+            }
+        }
+
+        body{
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+            padding:24px;
+            background:var(--bg);
+            color:var(--text);
+            margin:0;
+        }
+
+        .card{
+            max-width:600px;
+            margin:0 auto;
+            background:var(--card);
+            border:1px solid var(--border);
+            border-radius:16px;
+            padding:20px;
+        }
+
+        h1{margin-top:0}
+
+        a{
+            color:var(--accent);
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        a:hover{
+            text-decoration:underline;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:16px;
+            padding:12px 16px;
+            border-radius:12px;
+            background:var(--accent);
+            color:#0b1a10;
+            text-decoration:none;
+            font-weight:700;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Listooo – Supprimer le compte</h1>
+
+    <p>Vous pouvez supprimer votre compte à tout moment.</p>
+
+    <p>
+        Envoyez simplement un e-mail à :<br>
+        <a href="mailto:support@listooo.ch?subject=Supprimer%20le%20compte%20Listooo&body=Bonjour,%0A%0Aje%20souhaite%20supprimer%20mon%20compte%20Listooo.%0A%0AMerci.">
+            support@listooo.ch
+        </a>
+    </p>
+
+    <!-- OPTIONAL: Button -->
+    <a class="btn" href="mailto:support@listooo.ch?subject=Supprimer%20le%20compte%20Listooo&body=Bonjour,%0A%0Aje%20souhaite%20supprimer%20mon%20compte%20Listooo.%0A%0AMerci.">
+        📧 Supprimer le compte par e-mail
+    </a>
+
+    <p style="margin-top:18px;">
+        Nous supprimerons votre compte et toutes les données associées dans un délai de 30 jours.<br>
+        Dans de nombreux cas, la suppression est effectuée plus tôt.
+    </p>
+</div>
+
+</body>
+</html>

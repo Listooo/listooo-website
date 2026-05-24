@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listooo – Account Action</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #1E1E1E;
+      padding: 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      opacity: 0.7;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #43A047;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+    }
+
+    .success {
+      color: #4CAF50;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: #F44336;
+      margin-top: 15px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="card">
+  <h2 id="title">🔐</h2>
+
+  <div class="input-wrapper" id="inputWrapper">
+    <input type="password" id="newPassword" />
+    <span class="eye" onclick="togglePassword()" id="eyeIcon">👁</span>
+  </div>
+
+<button id="actionBtn" onclick="handleAction()">...</button>
+
+  <div id="message"></div>
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
+    authDomain: "listooo.firebaseapp.com"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  const lang = getParam("lang") || "de";
+  const mode = getParam("mode");
+  const oobCode = getParam("oobCode");
+
+  const t = {
+    de: {
+      verifyTitle: "📧 E-Mail bestätigen",
+      verifySuccess: "E-Mail erfolgreich bestätigt ✅",
+      verifyError: "Link ungültig oder abgelaufen",
+      resetTitle: "🔐 Passwort zurücksetzen",
+      placeholder: "Neues Passwort",
+      button: "Speichern",
+      loading: "Bitte warten...",
+      success: "Passwort erfolgreich geändert ✅",
+      errorShort: "Mindestens 6 Zeichen erforderlich",
+      invalid: "Ungültiger oder abgelaufener Link"
+    },
+    en: {
+      verifyTitle: "📧 Verify email",
+      verifySuccess: "Email successfully verified ✅",
+      verifyError: "Invalid or expired link",
+      resetTitle: "🔐 Reset password",
+      placeholder: "New password",
+      button: "Save",
+      loading: "Please wait...",
+      success: "Password successfully changed ✅",
+      errorShort: "Minimum 6 characters required",
+      invalid: "Invalid or expired link"
+    },
+    it: {
+      verifyTitle: "📧 Verifica email",
+      verifySuccess: "Email verificata con successo ✅",
+      verifyError: "Link non valido o scaduto",
+      resetTitle: "🔐 Reimposta password",
+      placeholder: "Nuova password",
+      button: "Salva",
+      loading: "Attendere...",
+      success: "Password aggiornata con successo ✅",
+      errorShort: "Minimo 6 caratteri",
+      invalid: "Link non valido o scaduto"
+    },
+    fr: {
+      verifyTitle: "📧 Vérifier l'email",
+      verifySuccess: "Email vérifiée avec succès ✅",
+      verifyError: "Lien invalide ou expiré",
+      resetTitle: "🔐 Réinitialiser le mot de passe",
+      placeholder: "Nouveau mot de passe",
+      button: "Enregistrer",
+      loading: "Veuillez patienter...",
+      success: "Mot de passe modifié avec succès ✅",
+      errorShort: "Minimum 6 caractères",
+      invalid: "Lien invalide ou expiré"
+    },
+    es: {
+      verifyTitle: "📧 Verificar email",
+      verifySuccess: "Email verificado correctamente ✅",
+      verifyError: "Enlace inválido o caducado",
+      resetTitle: "🔐 Restablecer contraseña",
+      placeholder: "Nueva contraseña",
+      button: "Guardar",
+      loading: "Por favor espera...",
+      success: "Contraseña cambiada correctamente ✅",
+      errorShort: "Mínimo 6 caracteres",
+      invalid: "Enlace inválido o caducado"
+    }
+  };
+
+  const tr = t[lang] || t["de"];
+
+  const title = document.getElementById("title");
+  const input = document.getElementById("newPassword");
+  const button = document.getElementById("actionBtn");
+  const message = document.getElementById("message");
+  const wrapper = document.getElementById("inputWrapper");
+
+  function showMessage(text, isError = false) {
+    message.innerHTML = "<div class='" + (isError ? "error" : "success") + "'>" + text + "</div>";
+  }
+
+  if (!mode || !oobCode) {
+    title.innerText = "❌";
+    showMessage(tr.invalid, true);
+    button.style.display = "none";
+    wrapper.style.display = "none";
+  }
+
+  // 🔥 VERIFY EMAIL
+  if (mode === "verifyEmail") {
+    title.innerText = tr.verifyTitle;
+    button.style.display = "none";
+    wrapper.style.display = "none";
+
+    firebase.auth().applyActionCode(oobCode)
+      .then(() => {
+        showMessage(tr.verifySuccess);
+
+        setTimeout(() => {
+          window.location.href = "listooo://verified";
+        }, 1500);
+
+        setTimeout(() => {
+          window.location.href = "https://listooo.ch";
+        }, 3000);
+      })
+      .catch(() => {
+        showMessage(tr.verifyError, true);
+      });
+  }
+
+  // 🔥 RESET PASSWORD
+  if (mode === "resetPassword") {
+    title.innerText = tr.resetTitle;
+    input.placeholder = tr.placeholder;
+    button.innerText = tr.button;
+
+    button.onclick = async () => {
+      const password = input.value.trim();
+
+      if (!password || password.length < 6) {
+        showMessage(tr.errorShort, true);
+        return;
+      }
+
+      button.disabled = true;
+      button.innerText = tr.loading;
+
+      firebase.auth().confirmPasswordReset(oobCode, password)
+        .then(() => {
+          showMessage(tr.success);
+          button.style.display = "none";
+          wrapper.style.display = "none";
+
+          setTimeout(() => {
+            window.location.href = "listooo://reset-success";
+          }, 1500);
+
+          setTimeout(() => {
+            window.location.href = "https://listooo.ch";
+          }, 3000);
+        })
+        .catch((error) => {
+          showMessage(error.message, true);
+          button.disabled = false;
+          button.innerText = tr.button;
+        });
+    };
+  }
+
+  function togglePassword() {
+    const eye = document.getElementById("eyeIcon");
+    if (input.type === "password") {
+      input.type = "text";
+      eye.innerText = "🙈";
+    } else {
+      input.type = "password";
+      eye.innerText = "👁";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Listooo – Link öffnen</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 24px; }
+    .box { max-width: 520px; margin: 0 auto; padding: 20px; border: 1px solid #e5e5e5; border-radius: 12px; }
+    a.btn { display: inline-block; padding: 12px 16px; border-radius: 8px; text-decoration: none; }
+    .primary { background: #16a34a; color: #fff; }
+    .secondary { background: #f3f4f6; color: #111827; margin-left: 8px; }
+    small { color:#6b7280; display:block; margin-top:8px; }
+  </style>
+  <script>
+    function getCode() {
+      const parts = window.location.pathname.split("/");
+      return parts[2] || "";
+    }
+
+    const code = getCode();
+
+    const intentUrl =
+      "intent://invite/" + encodeURIComponent(code) +
+      "#Intent;scheme=https;package=com.adriano.listooo;" +
+      "S.browser_fallback_url=" +
+      encodeURIComponent("https://play.google.com/store/apps/details?id=com.adriano.listooo") +
+      ";end";
+
+    window.addEventListener("DOMContentLoaded", function(){
+      document.getElementById("open-app").href = intentUrl;
+      document.getElementById("open-web").textContent =
+        "https://listooo.ch/invite/" + code;
+
+      if(code){
+        setTimeout(function(){
+          window.location.href = intentUrl;
+        }, 500);
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="box">
+    <h1>Mit Listooo öffnen</h1>
+    <p>Wir versuchen, den Link in der Listoo-App zu öffnen.</p>
+    <p>
+      <a id="open-app" class="btn primary" href="#">In der App öffnen</a>
+      <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.adriano.listooo">App im Play Store</a>
+    </p>
+    <small>Link: <span id="open-web"></span></small>
+  </div>
+</body>
+</html>
