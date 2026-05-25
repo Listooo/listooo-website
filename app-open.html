@@ -70,11 +70,13 @@
     }
   </style>
 
-  <script>
-    function getCode() {
-      const parts = window.location.pathname.split("/");
-      return parts[2] || "";
-    }
+function getCode() {
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+  return params.get("code") || "";
+}
 
     const code = getCode();
 
