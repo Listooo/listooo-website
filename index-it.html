@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light dark">
-  
+
 <link rel="canonical" href="https://listooo.ch/index-it.html" />
 
 <!-- Theme Color -->
@@ -21,6 +21,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
 <style>
+
 :root{
   --bg:#F7F8FA;
   --card:#FFFFFF;
@@ -40,7 +41,9 @@
   }
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -50,14 +53,18 @@ body{
   line-height:1.55;
 }
 
-.wrap{max-width:980px;margin:0 auto;padding:48px 20px 32px}
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:48px 20px 32px;
+}
 
 header{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  margin-bottom:28px
+  margin-bottom:28px;
 }
 
 .brand{
@@ -65,42 +72,57 @@ header{
   align-items:center;
   gap:12px;
   text-decoration:none;
-  color:var(--text)
+  color:var(--text);
 }
 
 .logo{
-  width:44px;height:44px;border-radius:12px;
+  width:44px;
+  height:44px;
+  border-radius:12px;
   background:var(--card);
   border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .logo img{
-  width:30px;height:30px;
-  object-fit:contain;border-radius:8px
+  width:30px;
+  height:30px;
+  object-fit:contain;
+  border-radius:8px;
 }
 
 .hero{
   display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:26px;
-  align-items:start;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
 
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr}
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
 }
 
-h1{margin:0 0 10px;font-size:42px}
+h1{
+  margin:0 0 10px;
+  font-size:58px;
+  line-height:1.05;
+}
 
 .tagline{
-  margin:0 0 12px;
+  margin:0 0 14px;
   color:var(--accent);
   font-weight:800;
+  font-size:20px;
 }
 
 .sub{
-  margin:0 0 18px;
+  margin:0 0 20px;
   color:var(--muted);
   font-size:18px;
 }
@@ -108,88 +130,68 @@ h1{margin:0 0 10px;font-size:42px}
 .bullets{
   list-style:none;
   padding:0;
+  margin:0;
   display:grid;
-  gap:10px;
+  gap:12px;
 }
 
-.bullets li{display:flex;gap:10px}
+.bullets li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
 
 .dot{
-  width:10px;height:10px;
+  width:10px;
+  height:10px;
   background:var(--accent);
   border-radius:99px;
-  margin-top:7px;
+  margin-top:8px;
 }
 
-.cta{margin-top:10px}
+.cta{
+  margin-top:24px;
+}
 
 .btn{
   display:inline-flex;
-  padding:12px 16px;
-  border-radius:14px;
+  align-items:center;
+  justify-content:center;
+  padding:14px 20px;
+  border-radius:16px;
   background:var(--accent);
   color:#0b1a10;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
+  transition:transform .2s ease;
 }
 
-/* CARD */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:16px;
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-/* SLIDER */
-.slider{position:relative;overflow:hidden}
-
-.track{
+.hero-image{
   display:flex;
-  gap:16px;
-  transition:transform .35s ease;
+  align-items:center;
+  justify-content:center;
 }
 
-.track .shot{
-  min-width:calc(50% - 8px);
-  aspect-ratio:9/16;
-  border-radius:14px;
-  background:#000;
-  overflow:hidden;
-}
-
-.shot img{
+.hero-image img{
   width:100%;
-  height:100%;
+  max-width:680px;
   object-fit:contain;
+  border-radius:28px;
 }
 
-/* NAV BUTTONS */
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:var(--card);
-  cursor:pointer;
-  z-index:100;
-}
-  
-.prev{left:6px}
-.next{right:6px}
-
-/* FOOTER */
 footer{
-  margin-top:34px;
-  padding-top:18px;
+  margin-top:40px;
+  padding-top:20px;
   border-top:1px solid var(--border);
   color:var(--muted);
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
+  gap:14px;
 }
 
 footer a{
@@ -197,28 +199,40 @@ footer a{
   text-decoration:none;
   margin-right:12px;
 }
+
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 
 <header>
+
 <a class="brand" href="/index-it.html">
-<div class="logo"><img src="/assets/logo.png"></div>
+
+<div class="logo">
+<img src="/assets/logo.png">
+</div>
+
 <div>
 <div style="font-weight:800">Listooo</div>
 <div style="color:var(--muted)">App per la spesa e liste</div>
 </div>
+
 </a>
+
 </header>
 
 <section class="hero">
 
 <div>
+
 <h1>Liste. Semplici. Intelligenti.</h1>
 
-<p class="tagline">100% gratuita • Nessuna pubblicità • Nessun abbonamento</p>
+<p class="tagline">
+100% gratuita • Nessuna pubblicità • Nessun abbonamento
+</p>
 
 <p class="sub">
 Listooo ti aiuta a fare la spesa e a organizzarti.
@@ -226,125 +240,93 @@ Crea liste in pochi secondi e ricevi promemoria al momento giusto.
 </p>
 
 <ul class="bullets">
-<li><span class="dot"></span>Crea liste istantaneamente</li>
-<li><span class="dot"></span>Immagini e colori</li>
-<li><span class="dot"></span>Promemoria</li>
-<li><span class="dot"></span>Backup e sincronizzazione</li>
+
+<li>
+<span class="dot"></span>
+<span>Crea liste istantaneamente</span>
+</li>
+
+<li>
+<span class="dot"></span>
+<span>Immagini e colori</span>
+</li>
+
+<li>
+<span class="dot"></span>
+<span>Promemoria</span>
+</li>
+
+<li>
+<span class="dot"></span>
+<span>Backup e sincronizzazione</span>
+</li>
+
 </ul>
 
 <div class="cta">
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
+
+<a
+class="btn"
+href="https://play.google.com/store/apps/details?id=com.adriano.listooo"
+target="_blank">
+
 Apri su Google Play
+
 </a>
-</div>
-</div>
-
-<!-- SLIDER -->
-<div class="card">
-<div class="slider">
-
-<button class="nav prev">‹</button>
-
-<div class="track">
-<div class="shot"><img src="/assets/screens/it/playstore-it-01.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-02.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-03.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-04.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-05.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-06.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-07.png"></div>
-</div>
-
-<button class="nav next">›</button>
 
 </div>
+
+</div>
+
+<!-- HERO IMAGE -->
+
+<div class="hero-image">
+
+<picture>
+
+  <!-- DARK MODE -->
+  <source
+    srcset="/assets/hero/homepage_bild_it_dark.png"
+    media="(prefers-color-scheme: dark)">
+
+  <!-- LIGHT MODE -->
+  <source
+    srcset="/assets/hero/homepage_bild_it_light.png"
+    media="(prefers-color-scheme: light)">
+
+  <img
+    src="/assets/hero/homepage_bild_it_dark.png"
+    alt="Listooo App">
+
+</picture>
+
 </div>
 
 </section>
 
 <footer>
-<div>© <span id="y"></span> Listooo</div>
+
+<div>
+© <span id="y"></span> Listooo
+</div>
+
 <div>
 <a href="/privacy-it.html">Privacy</a>
 <a href="/terms-it.html">Termini</a>
 <a href="/delete-account-it.html">Elimina account</a>
 <a href="mailto:support@listooo.ch">support@listooo.ch</a>
 </div>
+
 </footer>
 
 </div>
 
-<script defer>
+<script>
 
-document.getElementById("y").textContent=new Date().getFullYear()
-
-const track=document.querySelector(".track")
-const next=document.querySelector(".next")
-const prev=document.querySelector(".prev")
-
-let index=0
-
-function update(){
-  const shot = track.querySelector(".shot")
-  const gap = 16
-  const width = shot.getBoundingClientRect().width + gap
-  track.style.transform = `translateX(${-index * width}px)`
-
-  prev.style.opacity = index === 0 ? "0" : "1"
-  prev.style.pointerEvents = index === 0 ? "none" : "auto"
-
-  next.style.opacity = index >= max() ? "0" : "1"
-  next.style.pointerEvents = index >= max() ? "none" : "auto"
-}
-
-function max(){
-  const visible = Math.round(track.offsetWidth / (track.querySelector(".shot").offsetWidth + 16))
-  return track.children.length - visible
-}
-
-next.onclick = () => {
-  index = Math.min(index + 1, max())
-  update()
-}
-
-prev.onclick = () => {
-  index = Math.max(index - 1, 0)
-  update()
-}
-
-window.addEventListener("load", () => {
-  update()
-})
-
-window.onload = () => {
-
-  const lightbox = document.getElementById("lightbox")
-  const lightboxImg = document.getElementById("lightboxImg")
-
-  document.querySelectorAll(".shot img").forEach(img => {
-    img.onclick = () => {
-      lightbox.style.display = "flex"
-      lightboxImg.src = img.src
-    }
-  })
-
-  lightbox.onclick = () => {
-    lightbox.style.display = "none"
-  }
-
-}
+document.getElementById("y").textContent =
+new Date().getFullYear()
 
 </script>
-<div id="lightbox" style="
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  background:rgba(0,0,0,0.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-">
-  <img id="lightboxImg" style="max-width:90%; max-height:90%; border-radius:12px;">
-</div>
+
 </body>
 </html>
