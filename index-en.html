@@ -291,9 +291,23 @@ Open in Google Play
 
 <div class="hero-image">
 
-<img
-src="/assets/hero/homepage_bild_en.png"
-alt="Listooo App">
+<picture>
+
+  <!-- DARK MODE -->
+  <source
+    srcset="/assets/hero/homepage_bild_en.png"
+    media="(prefers-color-scheme: dark)">
+
+  <!-- LIGHT MODE -->
+  <source
+    srcset="/assets/hero/homepage_bild_hell_en.png"
+    media="(prefers-color-scheme: light)">
+
+  <img
+    src="/assets/hero/homepage_bild_en.png"
+    alt="Listooo App">
+
+</picture>
 
 </div>
 
