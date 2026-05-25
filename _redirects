@@ -1,3 +1,5 @@
 /.well-known/assetlinks.json /assetlinks.json 200
 /invite/* /app-open.html 200!
+/app-open.html /app-open.html 200
+/assets/* /assets/:splat 200
 /* /index.html 200
