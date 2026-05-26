@@ -103,14 +103,15 @@
 
     const code = getCode();
 
-    const intentUrl =
-      "intent://invite/" + encodeURIComponent(code) +
-      "#Intent;scheme=https;package=com.adriano.listooo;" +
-      "S.browser_fallback_url=" +
-      encodeURIComponent(
-        "https://play.google.com/store/apps/details?id=com.adriano.listooo"
-      ) +
-      ";end";
+const intentUrl =
+  "intent://listooo.ch/app-open.html?code=" +
+  encodeURIComponent(code) +
+  "#Intent;scheme=https;package=com.adriano.listooo;" +
+  "S.browser_fallback_url=" +
+  encodeURIComponent(
+    "https://play.google.com/store/apps/details?id=com.adriano.listooo"
+  ) +
+  ";end";
 
     window.addEventListener("DOMContentLoaded", function () {
 
