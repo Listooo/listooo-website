@@ -90,33 +90,38 @@
 
   <script>
 
-    function getCode() {
+  <script>
 
-      const parts =
-        window.location.pathname.split("/");
+function getCode() {
 
-      return parts[2] || "";
-    }
+  const parts =
+    window.location.pathname.split("/");
 
-    const code = getCode();
+  return parts[2] || "";
+}
 
-    const intentUrl =
-      "intent://invite/" + encodeURIComponent(code) +
-      "#Intent;scheme=https;package=com.adriano.listooo;" +
-      "S.browser_fallback_url=" +
-      encodeURIComponent(
-        "https://play.google.com/store/apps/details?id=com.adriano.listooo"
-      ) +
-      ";end";
+const code = getCode();
 
-    window.addEventListener("DOMContentLoaded", function () {
+const intentUrl =
+  "intent://invite/" + encodeURIComponent(code) +
+  "#Intent;scheme=https;package=com.adriano.listooo;" +
+  "S.browser_fallback_url=" +
+  encodeURIComponent(
+    "https://play.google.com/store/apps/details?id=com.adriano.listooo"
+  ) +
+  ";end";
 
-      document.getElementById("open-app").href =
-        intentUrl;
+window.addEventListener("DOMContentLoaded", function () {
 
-    });
+  document.getElementById("open-app").href =
+    intentUrl;
 
-  </script>
+  // ✅ AUTOMATISCH APP ÖFFNEN
+  window.location.href = intentUrl;
+
+});
+
+</script>
 
 </head>
 
