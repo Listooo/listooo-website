@@ -1,32 +1,52 @@
 <!doctype html>
 <html lang="de">
+
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <title>Listooo – Einladung zur Liste</title>
 
-  <meta name="description" content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
+  <meta name="description"
+        content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Listooo">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:title" content="Listooo – Einladung zur Liste">
-  <meta property="og:description" content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
-  <meta property="og:url" content="https://listooo.ch/invite/">
 
-  <meta property="og:image" content="https://listooo.ch/assets/og-whatsapp.png">
-  <meta property="og:image:secure_url" content="https://listooo.ch/assets/og-whatsapp.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:title"
+        content="Listooo – Einladung zur Liste">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Listooo – Einladung zur Liste">
-  <meta name="twitter:description" content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
-  <meta name="twitter:image" content="https://listooo.ch/assets/og-whatsapp.png">
+  <meta property="og:description"
+        content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
+
+  <meta property="og:url"
+        content="https://listooo.ch/app-open.html">
+
+  <meta property="og:image"
+        content="https://listooo.ch/assets/og-whatsapp.png">
+
+  <meta property="og:image:secure_url"
+        content="https://listooo.ch/assets/og-whatsapp.png">
+
+  <meta property="og:image:type"
+        content="image/png">
+
+  <meta property="og:image:width"
+        content="1200">
+
+  <meta property="og:image:height"
+        content="630">
+
+  <meta name="twitter:card"
+        content="summary_large_image">
+
+  <meta name="twitter:image"
+        content="https://listooo.ch/assets/og-whatsapp.png">
 
   <style>
+
     body {
       font-family: system-ui, Arial, sans-serif;
       padding: 24px;
@@ -68,15 +88,18 @@
       margin-top: 12px;
       word-break: break-all;
     }
+
   </style>
 
-function getCode() {
+  <script>
 
-  const params =
-    new URLSearchParams(window.location.search);
+    function getCode() {
 
-  return params.get("code") || "";
-}
+      const params =
+        new URLSearchParams(window.location.search);
+
+      return params.get("code") || "";
+    }
 
     const code = getCode();
 
@@ -84,29 +107,56 @@ function getCode() {
       "intent://invite/" + encodeURIComponent(code) +
       "#Intent;scheme=https;package=com.adriano.listooo;" +
       "S.browser_fallback_url=" +
-      encodeURIComponent("https://play.google.com/store/apps/details?id=com.adriano.listooo") +
+      encodeURIComponent(
+        "https://play.google.com/store/apps/details?id=com.adriano.listooo"
+      ) +
       ";end";
 
     window.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("open-app").href = intentUrl;
+
+      document.getElementById("open-app").href =
+        intentUrl;
+
       document.getElementById("open-web").textContent =
-        "https://listooo.ch/invite/" + code;
+        "https://listooo.ch/app-open.html?code=" + code;
     });
+
   </script>
+
 </head>
 
 <body>
+
   <div class="box">
+
     <h1>Mit Listooo öffnen</h1>
 
-    <p>Wir versuchen, den Link direkt in der Listooo-App zu öffnen.</p>
-
     <p>
-      <a id="open-app" class="btn primary" href="#">In der App öffnen</a>
-      <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.adriano.listooo">App im Play Store</a>
+      Wir versuchen, den Link direkt in der Listooo-App zu öffnen.
     </p>
 
-    <small>Link: <span id="open-web"></span></small>
+    <p>
+
+      <a id="open-app"
+         class="btn primary"
+         href="#">
+         In der App öffnen
+      </a>
+
+      <a class="btn secondary"
+         href="https://play.google.com/store/apps/details?id=com.adriano.listooo">
+         App im Play Store
+      </a>
+
+    </p>
+
+    <small>
+      Link:
+      <span id="open-web"></span>
+    </small>
+
   </div>
+
 </body>
+
 </html>
