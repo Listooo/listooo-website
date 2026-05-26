@@ -11,6 +11,8 @@
   <meta name="description"
         content="Öffne die Einladung und synchronisiere deine Liste mit Listooo.">
 
+  <!-- Open Graph -->
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Listooo">
   <meta property="og:locale" content="de_DE">
@@ -38,6 +40,8 @@
 
   <meta property="og:image:height"
         content="630">
+
+  <!-- Twitter -->
 
   <meta name="twitter:card"
         content="summary_large_image">
@@ -82,44 +86,34 @@
       margin-left: 8px;
     }
 
-    small {
-      color: #9ca3af;
-      display: block;
-      margin-top: 12px;
-      word-break: break-all;
-    }
-
   </style>
 
   <script>
 
     function getCode() {
 
-      const params =
-        new URLSearchParams(window.location.search);
+      const parts =
+        window.location.pathname.split("/");
 
-      return params.get("code") || "";
+      return parts[2] || "";
     }
 
     const code = getCode();
 
-const intentUrl =
-  "intent://listooo.ch/app-open.html?code=" +
-  encodeURIComponent(code) +
-  "#Intent;scheme=https;package=com.adriano.listooo;" +
-  "S.browser_fallback_url=" +
-  encodeURIComponent(
-    "https://play.google.com/store/apps/details?id=com.adriano.listooo"
-  ) +
-  ";end";
+    const intentUrl =
+      "intent://invite/" + encodeURIComponent(code) +
+      "#Intent;scheme=https;package=com.adriano.listooo;" +
+      "S.browser_fallback_url=" +
+      encodeURIComponent(
+        "https://play.google.com/store/apps/details?id=com.adriano.listooo"
+      ) +
+      ";end";
 
     window.addEventListener("DOMContentLoaded", function () {
 
       document.getElementById("open-app").href =
         intentUrl;
 
-      document.getElementById("open-web").textContent =
-        "https://listooo.ch/app-open.html?code=" + code;
     });
 
   </script>
