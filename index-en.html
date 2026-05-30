@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light dark">
 
-<!-- CANONICAL -->
+<!-- ✅ CANONICAL -->
 <link rel="canonical" href="https://listooo.ch/index-en.html" />
 
-<!-- HREFLANG -->
+<!-- ✅ HREFLANG -->
 <link rel="alternate" hreflang="en" href="https://listooo.ch/index-en.html" />
 <link rel="alternate" hreflang="de" href="https://listooo.ch/index-de.html" />
 <link rel="alternate" hreflang="es" href="https://listooo.ch/index-es.html" />
 <link rel="alternate" hreflang="fr" href="https://listooo.ch/index-fr.html" />
 <link rel="alternate" hreflang="it" href="https://listooo.ch/index-it.html" />
+<link rel="alternate" hreflang="pt" href="https://listooo.ch/index-pt.html" />
 <link rel="alternate" hreflang="x-default" href="https://listooo.ch/" />
 
 <!-- Theme Color -->
@@ -24,13 +25,12 @@
 
 <meta name="description" content="Listooo is a free, ad-free shopping and list app for Android — with reminders, images, colors, backup and sync." />
 
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
 <link rel="shortcut icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
 <style>
-
 :root{
   --bg:#F7F8FA;
   --card:#FFFFFF;
@@ -50,9 +50,7 @@
   }
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -62,18 +60,14 @@ body{
   line-height:1.55;
 }
 
-.wrap{
-  max-width:1200px;
-  margin:0 auto;
-  padding:48px 20px 32px;
-}
+.wrap{max-width:980px;margin:0 auto;padding:48px 20px 32px}
 
 header{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  margin-bottom:28px;
+  margin-bottom:28px
 }
 
 .brand{
@@ -81,57 +75,42 @@ header{
   align-items:center;
   gap:12px;
   text-decoration:none;
-  color:var(--text);
+  color:var(--text)
 }
 
 .logo{
-  width:44px;
-  height:44px;
-  border-radius:12px;
+  width:44px;height:44px;border-radius:12px;
   background:var(--card);
   border:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center
 }
 
 .logo img{
-  width:30px;
-  height:30px;
-  object-fit:contain;
-  border-radius:8px;
+  width:30px;height:30px;
+  object-fit:contain;border-radius:8px
 }
 
 .hero{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:26px;
+  align-items:start;
 }
 
 @media (max-width:900px){
-
-  .hero{
-    grid-template-columns:1fr;
-  }
-
+  .hero{grid-template-columns:1fr}
 }
 
-h1{
-  margin:0 0 10px;
-  font-size:58px;
-  line-height:1.05;
-}
+h1{margin:0 0 10px;font-size:42px}
 
 .tagline{
-  margin:0 0 14px;
+  margin:0 0 12px;
   color:var(--accent);
   font-weight:800;
-  font-size:20px;
 }
 
 .sub{
-  margin:0 0 20px;
+  margin:0 0 18px;
   color:var(--muted);
   font-size:18px;
 }
@@ -139,68 +118,88 @@ h1{
 .bullets{
   list-style:none;
   padding:0;
-  margin:0;
   display:grid;
-  gap:12px;
+  gap:10px;
 }
 
-.bullets li{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-}
+.bullets li{display:flex;gap:10px}
 
 .dot{
-  width:10px;
-  height:10px;
+  width:10px;height:10px;
   background:var(--accent);
   border-radius:99px;
-  margin-top:8px;
+  margin-top:7px;
 }
 
-.cta{
-  margin-top:24px;
-}
+.cta{margin-top:10px}
 
 .btn{
   display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 20px;
-  border-radius:16px;
+  padding:12px 16px;
+  border-radius:14px;
   background:var(--accent);
   color:#0b1a10;
   text-decoration:none;
-  font-weight:700;
-  transition:transform .2s ease;
+  font-weight:600;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
+/* CARD */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
 }
 
-.hero-image{
+/* SLIDER */
+.slider{position:relative;overflow:hidden}
+
+.track{
   display:flex;
-  align-items:center;
-  justify-content:center;
+  gap:16px;
+  transition:transform .35s ease;
 }
 
-.hero-image img{
+.track .shot{
+  min-width:calc(50% - 8px);
+  aspect-ratio:9/16;
+  border-radius:14px;
+  background:#000;
+  overflow:hidden;
+}
+
+.shot img{
   width:100%;
-  max-width:680px;
+  height:100%;
   object-fit:contain;
-  border-radius:28px;
 }
 
+/* NAV BUTTONS */
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--card);
+  cursor:pointer;
+  z-index:100;
+}
+  
+.prev{left:6px}
+.next{right:6px}
+
+/* FOOTER */
 footer{
-  margin-top:40px;
-  padding-top:20px;
+  margin-top:34px;
+  padding-top:18px;
   border-top:1px solid var(--border);
   color:var(--muted);
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
-  gap:14px;
 }
 
 footer a{
@@ -208,40 +207,28 @@ footer a{
   text-decoration:none;
   margin-right:12px;
 }
-
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
 <header>
-
 <a class="brand" href="/index-en.html">
-
-<div class="logo">
-<img src="/assets/logo.png">
-</div>
-
+<div class="logo"><img src="/assets/logo.png"></div>
 <div>
 <div style="font-weight:800">Listooo</div>
 <div style="color:var(--muted)">Shopping & List App</div>
 </div>
-
 </a>
-
 </header>
 
 <section class="hero">
 
 <div>
-
 <h1>Lists. Simple. Smart.</h1>
 
-<p class="tagline">
-100% free • No ads • No subscription
-</p>
+<p class="tagline">100% free • No ads • No subscription</p>
 
 <p class="sub">
 Listooo helps you shop and stay organized.
@@ -249,93 +236,125 @@ Create lists in seconds and get reminders at the right time.
 </p>
 
 <ul class="bullets">
-
-<li>
-<span class="dot"></span>
-<span>Create lists instantly</span>
-</li>
-
-<li>
-<span class="dot"></span>
-<span>Images & colors</span>
-</li>
-
-<li>
-<span class="dot"></span>
-<span>Reminders</span>
-</li>
-
-<li>
-<span class="dot"></span>
-<span>Backup & sync</span>
-</li>
-
+<li><span class="dot"></span>Create lists instantly</li>
+<li><span class="dot"></span>Images & colors</li>
+<li><span class="dot"></span>Reminders</li>
+<li><span class="dot"></span>Backup & sync</li>
 </ul>
 
 <div class="cta">
-
-<a
-class="btn"
-href="https://play.google.com/store/apps/details?id=com.adriano.listooo"
-target="_blank">
-
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
 Open in Google Play
-
 </a>
-
+</div>
 </div>
 
+<!-- SLIDER -->
+<div class="card">
+<div class="slider">
+
+<button class="nav prev">‹</button>
+
+<div class="track">
+<div class="shot"><img src="/assets/screens/en/playstore-en-01.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-02.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-03.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-04.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-05.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-06.png"></div>
+<div class="shot"><img src="/assets/screens/en/playstore-en-07.png"></div>
 </div>
 
-<!-- HERO IMAGE -->
+<button class="nav next">›</button>
 
-<div class="hero-image">
-
-<picture>
-
-  <!-- DARK MODE -->
-  <source
-    srcset="/assets/hero/homepage_bild_en.png"
-    media="(prefers-color-scheme: dark)">
-
-  <!-- LIGHT MODE -->
-  <source
-    srcset="/assets/hero/homepage_bild_hell_en.png"
-    media="(prefers-color-scheme: light)">
-
-  <img
-    src="/assets/hero/homepage_bild_en.png"
-    alt="Listooo App">
-
-</picture>
-
+</div>
 </div>
 
 </section>
 
 <footer>
-
-<div>
-© <span id="y"></span> Listooo
-</div>
-
+<div>© <span id="y"></span> Listooo</div>
 <div>
 <a href="/privacy-en.html">Privacy</a>
 <a href="/terms-en.html">Terms</a>
 <a href="/delete-account.html">Delete Account</a>
 <a href="mailto:support@listooo.ch">support@listooo.ch</a>
 </div>
-
 </footer>
 
 </div>
 
-<script>
+<script defer>
 
-document.getElementById("y").textContent =
-new Date().getFullYear()
+document.getElementById("y").textContent=new Date().getFullYear()
+
+const track=document.querySelector(".track")
+const next=document.querySelector(".next")
+const prev=document.querySelector(".prev")
+
+let index=0
+
+function update(){
+  const shot = track.querySelector(".shot")
+  const gap = 16
+  const width = shot.getBoundingClientRect().width + gap
+  track.style.transform = `translateX(${-index * width}px)`
+
+  prev.style.opacity = index === 0 ? "0" : "1"
+  prev.style.pointerEvents = index === 0 ? "none" : "auto"
+
+  next.style.opacity = index >= max() ? "0" : "1"
+  next.style.pointerEvents = index >= max() ? "none" : "auto"
+}
+
+function max(){
+  const visible = Math.round(track.offsetWidth / (track.querySelector(".shot").offsetWidth + 16))
+  return track.children.length - visible
+}
+
+next.onclick = () => {
+  index = Math.min(index + 1, max())
+  update()
+}
+
+prev.onclick = () => {
+  index = Math.max(index - 1, 0)
+  update()
+}
+
+window.addEventListener("load", () => {
+  update()
+})
+
+window.onload = () => {
+
+  const lightbox = document.getElementById("lightbox")
+  const lightboxImg = document.getElementById("lightboxImg")
+
+  document.querySelectorAll(".shot img").forEach(img => {
+    img.onclick = () => {
+      lightbox.style.display = "flex"
+      lightboxImg.src = img.src
+    }
+  })
+
+  lightbox.onclick = () => {
+    lightbox.style.display = "none"
+  }
+
+}
 
 </script>
-
+<div id="lightbox" style="
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+">
+  <img id="lightboxImg" style="max-width:90%; max-height:90%; border-radius:12px;">
+</div>
 </body>
 </html>
