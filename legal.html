@@ -264,7 +264,7 @@
   </div>
 
   <script>
-const supported = new Set(["de","en","it","es","fr"]);
+const supported = new Set(["de","en","it","es","fr","pt"]);
     
     function getLang(){
       // 1) App kann lang übergeben: legal.html?lang=de|en|it|es
@@ -359,6 +359,21 @@ const supported = new Set(["de","en","it","es","fr"]);
   termsHref: "/terms-fr.html",
   imprintHref: "/impressum-fr.html",
   backHref: "/index-fr.html"
+},
+      pt: {
+  h1: "Legal",
+  intro: "Aqui encontra todas as informações legais importantes sobre o Listooo.",
+  privacyTitle: "Política de Privacidade",
+  privacySub: "Informações sobre o tratamento de dados",
+  termsTitle: "Termos de Uso",
+  termsSub: "Regras para usar a app",
+  imprintTitle: "Aviso legal",
+  imprintSub: "Contacto e informações legais",
+  back: "Voltar ao início",
+  privacyHref: "/privacy-pt.html",
+  termsHref: "/terms-pt.html",
+  imprintHref: "/impressum-pt.html",
+  backHref: "/index-pt.html"
 }
     }[lang];
 
