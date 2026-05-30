@@ -150,45 +150,17 @@ h1{margin:0 0 10px;font-size:42px}
   padding:16px;
 }
 
-/* SLIDER */
-.slider{position:relative;overflow:hidden}
+/* APP IMAGE */
+.app-preview{padding:0;overflow:hidden}
 
-.track{
-  display:flex;
-  gap:16px;
-  transition:transform .35s ease;
-}
+.app-preview picture{display:block}
 
-.track .shot{
-  min-width:calc(50% - 8px);
-  aspect-ratio:9/16;
-  border-radius:14px;
-  background:#000;
-  overflow:hidden;
-}
-
-.shot img{
+.homepage-image{
+  display:block;
   width:100%;
-  height:100%;
-  object-fit:contain;
+  height:auto;
+  border-radius:18px;
 }
-
-/* NAV BUTTONS */
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:var(--card);
-  cursor:pointer;
-  z-index:100;
-}
-  
-.prev{left:6px}
-.next{right:6px}
 
 /* FOOTER */
 footer{
@@ -248,25 +220,12 @@ Apri su Google Play
 </div>
 </div>
 
-<!-- SLIDER -->
-<div class="card">
-<div class="slider">
-
-<button class="nav prev">‹</button>
-
-<div class="track">
-<div class="shot"><img src="/assets/screens/it/playstore-it-01.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-02.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-03.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-04.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-05.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-06.png"></div>
-<div class="shot"><img src="/assets/screens/it/playstore-it-07.png"></div>
-</div>
-
-<button class="nav next">›</button>
-
-</div>
+<!-- APP IMAGE -->
+<div class="card app-preview">
+<picture>
+<source srcset="/assets/homepage/homepage_bild_it.png" media="(prefers-color-scheme: dark)">
+<img class="homepage-image" src="/assets/homepage/homepage_bild_hell_it.png" alt="Anteprima dell'app Listooo" loading="eager">
+</picture>
 </div>
 
 </section>
@@ -284,76 +243,7 @@ Apri su Google Play
 </div>
 
 <script defer>
-
 document.getElementById("y").textContent=new Date().getFullYear()
-
-const track=document.querySelector(".track")
-const next=document.querySelector(".next")
-const prev=document.querySelector(".prev")
-
-let index=0
-
-function update(){
-  const shot = track.querySelector(".shot")
-  const gap = 16
-  const width = shot.getBoundingClientRect().width + gap
-  track.style.transform = `translateX(${-index * width}px)`
-
-  prev.style.opacity = index === 0 ? "0" : "1"
-  prev.style.pointerEvents = index === 0 ? "none" : "auto"
-
-  next.style.opacity = index >= max() ? "0" : "1"
-  next.style.pointerEvents = index >= max() ? "none" : "auto"
-}
-
-function max(){
-  const visible = Math.round(track.offsetWidth / (track.querySelector(".shot").offsetWidth + 16))
-  return track.children.length - visible
-}
-
-next.onclick = () => {
-  index = Math.min(index + 1, max())
-  update()
-}
-
-prev.onclick = () => {
-  index = Math.max(index - 1, 0)
-  update()
-}
-
-window.addEventListener("load", () => {
-  update()
-})
-
-window.onload = () => {
-
-  const lightbox = document.getElementById("lightbox")
-  const lightboxImg = document.getElementById("lightboxImg")
-
-  document.querySelectorAll(".shot img").forEach(img => {
-    img.onclick = () => {
-      lightbox.style.display = "flex"
-      lightboxImg.src = img.src
-    }
-  })
-
-  lightbox.onclick = () => {
-    lightbox.style.display = "none"
-  }
-
-}
-
 </script>
-<div id="lightbox" style="
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  background:rgba(0,0,0,0.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-">
-  <img id="lightboxImg" style="max-width:90%; max-height:90%; border-radius:12px;">
-</div>
 </body>
 </html>
