@@ -130,7 +130,13 @@ h1{margin:0 0 10px;font-size:42px}
   margin-top:7px;
 }
 
-.cta{margin-top:10px}
+.cta{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
 
 .btn{
   display:inline-flex;
@@ -140,6 +146,18 @@ h1{margin:0 0 10px;font-size:42px}
   color:#0b1a10;
   text-decoration:none;
   font-weight:600;
+}
+
+.btn-secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.download-note{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:14px;
 }
 
 /* CARD */
@@ -217,7 +235,11 @@ Crea liste in pochi secondi e ricevi promemoria al momento giusto.
 <a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
 Apri su Google Play
 </a>
+<a class="btn btn-secondary" href="/downloads/listooo.apk" download>
+Scarica APK direttamente
+</a>
 </div>
+<p class="download-note">Per Android. L'installazione da fonti sconosciute deve essere consentita.</p>
 </div>
 
 <!-- APP IMAGE -->
