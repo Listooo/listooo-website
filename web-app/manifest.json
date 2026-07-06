@@ -1,11 +1,11 @@
 {
-    "name": "Listooo",
-    "short_name": "Listooo",
+    "name": "listooo_flutter",
+    "short_name": "listooo_flutter",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#111214",
-    "theme_color": "#34C759",
-    "description": "Listooo Web-App fuer Einkaufslisten und organisierte Listen.",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
