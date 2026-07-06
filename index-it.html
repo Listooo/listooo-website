@@ -88,6 +88,33 @@ header{
   width:30px;height:30px;
   object-fit:contain;border-radius:8px
 }
+.top-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.nav-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:9px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:700;
+}
+
+.nav-primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#0b1a10;
+}
 
 .hero{
   display:grid;
@@ -98,6 +125,23 @@ header{
 
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .top-actions{
+    justify-content:flex-start;
+    width:100%;
+  }
+
+  .nav-link{
+    min-height:36px;
+    padding:8px 12px;
+    font-size:14px;
+  }
 }
 
 h1{margin:0 0 10px;font-size:42px}
@@ -210,6 +254,10 @@ footer a{
 <div style="color:var(--muted)">App per la spesa e liste</div>
 </div>
 </a>
+<nav class="top-actions" aria-label="Account e web app">
+<a class="nav-link" href="https://app.listooo.ch/login">Accedi</a>
+<a class="nav-link nav-primary" href="https://app.listooo.ch">Apri web app</a>
+</nav>
 </header>
 
 <section class="hero">
