@@ -1,145 +1,46 @@
-<!doctype html>
-<html lang="de">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<title>Listooo Web-App</title>
-<meta name="description" content="Listooo im Browser nutzen. Die Web-App mit Konto und Synchronisierung wird vorbereitet.">
-<link rel="icon" href="/assets/favicon.png">
-<style>
-:root{
-  --bg:#232323;
-  --card:#2b2b2b;
-  --text:#ffffff;
-  --muted:#b9b9b9;
-  --accent:#34C759;
-  --border:#3a3a3a;
-}
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-*{box-sizing:border-box}
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-body{
-  margin:0;
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:24px;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.55;
-}
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-main{
-  width:min(100%,720px);
-  border:1px solid var(--border);
-  border-radius:24px;
-  background:var(--card);
-  padding:28px;
-}
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/web-app/">
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:28px;
-}
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Listooo Web-App fuer Einkaufslisten, Erinnerungen und organisierte Listen.">
 
-.brand img{
-  width:52px;
-  height:52px;
-  border-radius:14px;
-}
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Listooo">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-h1{
-  margin:0 0 12px;
-  font-size:clamp(2.2rem,7vw,4.2rem);
-  line-height:1.02;
-  letter-spacing:0;
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-p{
-  margin:0 0 20px;
-  color:var(--muted);
-  font-size:1.08rem;
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:26px;
-}
-
-a{
-  display:inline-flex;
-  min-height:46px;
-  align-items:center;
-  justify-content:center;
-  padding:12px 16px;
-  border-radius:14px;
-  color:var(--text);
-  border:1px solid var(--border);
-  font-weight:750;
-  text-decoration:none;
-}
-
-.primary{
-  background:var(--accent);
-  border-color:var(--accent);
-  color:#0b1a10;
-}
-
-.steps{
-  display:grid;
-  gap:10px;
-  margin:24px 0 0;
-  padding:0;
-  list-style:none;
-}
-
-.steps li{
-  display:flex;
-  gap:10px;
-  color:var(--muted);
-}
-
-.dot{
-  width:10px;
-  height:10px;
-  margin-top:8px;
-  border-radius:99px;
-  background:var(--accent);
-  flex:0 0 auto;
-}
-</style>
+  <title>Listooo Web-App</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-<main>
-<div class="brand">
-<img src="/assets/logo.png" alt="Listooo">
-<div>
-<strong>Listooo</strong>
-<div style="color:var(--muted)">Web-App</div>
-</div>
-</div>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-<h1>Listooo am PC nutzen.</h1>
-<p>
-Die Web-App wird als naechster Schritt vorbereitet. Danach kannst du dich im Browser anmelden und deine Listen zwischen Handy und PC synchronisieren.
-</p>
-
-<ul class="steps">
-<li><span class="dot"></span>Konto und Anmeldung</li>
-<li><span class="dot"></span>Listen im Browser bearbeiten</li>
-<li><span class="dot"></span>Synchronisierung mit der mobilen App</li>
-</ul>
-
-<div class="actions">
-<a class="primary" href="/web-app/login.html">Anmelden vorbereiten</a>
-<a href="/">Zurueck zur Homepage</a>
-</div>
-</main>
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
