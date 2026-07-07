@@ -121,8 +121,15 @@ header{
   gap:10px;
   max-width:320px;
   min-width:150px;
-  padding:7px 12px;
+  padding:9px 14px;
   justify-content:flex-start;
+}
+
+.account-status{
+  cursor:default;
+  user-select:text;
+  pointer-events:none;
+  background:rgba(255,255,255,.025);
 }
 
 .account-avatar{
@@ -144,7 +151,7 @@ header{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  line-height:1.1;
+  line-height:1.22;
 }
 
 .account-title,
@@ -160,6 +167,8 @@ header{
   color:var(--muted);
   font-size:12px;
   font-weight:650;
+  line-height:1.28;
+  padding-bottom:1px;
 }
 
 .account-chip.is-signed-in .account-avatar{
@@ -310,13 +319,13 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Conta e app web">
-<a class="nav-link account-chip" href="/web-app/" data-auth-action data-login-label="Entrar" data-logout-label="Sair">
+<div class="nav-link account-chip account-status" data-auth-action data-login-label="Entrar" data-logout-label="Sair" role="status" aria-live="polite">
 <span class="account-avatar" data-auth-avatar aria-hidden="true">✓</span>
 <span class="account-copy">
 <span class="account-title" data-auth-title>Entrar</span>
 <span class="account-email" data-auth-account hidden></span>
 </span>
-</a>
+</div>
 <a class="nav-link signout-link" href="#" data-signout-action hidden>Sair</a>
 <a class="nav-link nav-primary" href="/web-app/">Abrir web app</a>
 </nav>
@@ -433,7 +442,7 @@ if (authButton) {
       avatarNode.textContent = signedIn && accountName ? accountName.trim().charAt(0).toUpperCase() : "?";
     }
     authButton.setAttribute("aria-label", signedIn && accountName
-      ? `${signedInLabel} als ${accountName}. Web-App öffnen.`
+      ? `${signedInLabel} als ${accountName}`
       : loginLabel);
     authButton.title = signedIn && accountName ? `${signedInLabel}: ${accountName}` : loginLabel;
     if (signOutButton) {
