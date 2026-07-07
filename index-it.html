@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8" />
@@ -20,9 +20,9 @@
 <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
 
-<title>Listooo – App per la spesa e liste per Android</title>
+<title>Listooo â€“ App per la spesa e liste per Android</title>
 
-<meta name="description" content="Listooo è un'app gratuita e senza pubblicità per la spesa e le liste su Android — con promemoria, immagini, colori, backup e sincronizzazione." />
+<meta name="description" content="Listooo Ã¨ un'app gratuita e senza pubblicitÃ  per la spesa e le liste su Android â€” con promemoria, immagini, colori, backup e sincronizzazione." />
 
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -255,7 +255,7 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Account e web app">
-<a class="nav-link" href="/web-app/">Accedi</a>
+<a class="nav-link" href="/web-app/" data-auth-action data-login-label="Accedi" data-logout-label="Esci">Accedi</a>
 <a class="nav-link nav-primary" href="/web-app/">Apri web app</a>
 </nav>
 </header>
@@ -265,7 +265,7 @@ footer a{
 <div>
 <h1>Liste. Semplici. Intelligenti.</h1>
 
-<p class="tagline">100% gratuita • Nessuna pubblicità • Nessun abbonamento</p>
+<p class="tagline">100% gratuita â€¢ Nessuna pubblicitÃ  â€¢ Nessun abbonamento</p>
 
 <p class="sub">
 Listooo ti aiuta a fare la spesa e a organizzarti.
@@ -304,7 +304,7 @@ Scarica APK direttamente
 </section>
 
 <footer>
-<div>© <span id="y"></span> Listooo</div>
+<div>Â© <span id="y"></span> Listooo</div>
 <div>
 <a href="/privacy-it.html">Privacy</a>
 <a href="/terms-it.html">Termini</a>
@@ -318,5 +318,51 @@ Scarica APK direttamente
 <script defer>
 document.getElementById("y").textContent=new Date().getFullYear()
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const authButton = document.querySelector("[data-auth-action]");
+if (authButton) {
+  const app = initializeApp({
+    apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
+    authDomain: "listooo.firebaseapp.com",
+    projectId: "listooo",
+    appId: "1:301950999840:web:15de276c4a21f9078dcb45",
+    messagingSenderId: "301950999840",
+  });
+  const auth = getAuth(app);
+  const loginLabel = authButton.dataset.loginLabel || authButton.textContent.trim();
+  const logoutLabels = {
+    de: "Abmelden",
+    en: "Sign out",
+    es: "Cerrar sesión",
+    fr: "Se déconnecter",
+    it: "Esci",
+    pt: "Sair",
+  };
+  const lang = (document.documentElement.lang || "de").slice(0, 2);
+  const logoutLabel = authButton.dataset.logoutLabel || logoutLabels[lang] || "Abmelden";
+  let signedIn = false;
+
+  onAuthStateChanged(auth, (user) => {
+    signedIn = !!user;
+    authButton.textContent = signedIn ? logoutLabel : loginLabel;
+    authButton.setAttribute("aria-label", signedIn ? logoutLabel : loginLabel);
+  });
+
+  authButton.addEventListener("click", async (event) => {
+    if (!signedIn) return;
+    event.preventDefault();
+    authButton.setAttribute("aria-busy", "true");
+    try {
+      await signOut(auth);
+    } finally {
+      authButton.removeAttribute("aria-busy");
+    }
+  });
+}
+</script>
 </body>
 </html>
+

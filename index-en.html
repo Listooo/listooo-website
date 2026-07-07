@@ -1,14 +1,14 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light dark">
 
-<!-- ✅ CANONICAL -->
+<!-- âœ… CANONICAL -->
 <link rel="canonical" href="https://listooo.ch/index-en.html" />
 
-<!-- ✅ HREFLANG -->
+<!-- âœ… HREFLANG -->
 <link rel="alternate" hreflang="en" href="https://listooo.ch/index-en.html" />
 <link rel="alternate" hreflang="de" href="https://listooo.ch/" />
 <link rel="alternate" hreflang="es" href="https://listooo.ch/index-es.html" />
@@ -21,9 +21,9 @@
 <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
 
-<title>Listooo – Shopping & List App for Android</title>
+<title>Listooo â€“ Shopping & List App for Android</title>
 
-<meta name="description" content="Listooo is a free, ad-free shopping and list app for Android — with reminders, images, colors, backup and sync." />
+<meta name="description" content="Listooo is a free, ad-free shopping and list app for Android â€” with reminders, images, colors, backup and sync." />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -256,7 +256,7 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Account and web app">
-<a class="nav-link" href="/web-app/">Sign in</a>
+<a class="nav-link" href="/web-app/" data-auth-action data-login-label="Sign in" data-logout-label="Sign out">Sign in</a>
 <a class="nav-link nav-primary" href="/web-app/">Open web app</a>
 </nav>
 </header>
@@ -266,7 +266,7 @@ footer a{
 <div>
 <h1>Lists. Simple. Smart.</h1>
 
-<p class="tagline">100% free • No ads • No subscription</p>
+<p class="tagline">100% free â€¢ No ads â€¢ No subscription</p>
 
 <p class="sub">
 Listooo helps you shop and stay organized.
@@ -305,7 +305,7 @@ Download APK directly
 </section>
 
 <footer>
-<div>© <span id="y"></span> Listooo</div>
+<div>Â© <span id="y"></span> Listooo</div>
 <div>
 <a href="/privacy-en.html">Privacy</a>
 <a href="/terms-en.html">Terms</a>
@@ -319,5 +319,51 @@ Download APK directly
 <script defer>
 document.getElementById("y").textContent=new Date().getFullYear()
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const authButton = document.querySelector("[data-auth-action]");
+if (authButton) {
+  const app = initializeApp({
+    apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
+    authDomain: "listooo.firebaseapp.com",
+    projectId: "listooo",
+    appId: "1:301950999840:web:15de276c4a21f9078dcb45",
+    messagingSenderId: "301950999840",
+  });
+  const auth = getAuth(app);
+  const loginLabel = authButton.dataset.loginLabel || authButton.textContent.trim();
+  const logoutLabels = {
+    de: "Abmelden",
+    en: "Sign out",
+    es: "Cerrar sesión",
+    fr: "Se déconnecter",
+    it: "Esci",
+    pt: "Sair",
+  };
+  const lang = (document.documentElement.lang || "de").slice(0, 2);
+  const logoutLabel = authButton.dataset.logoutLabel || logoutLabels[lang] || "Abmelden";
+  let signedIn = false;
+
+  onAuthStateChanged(auth, (user) => {
+    signedIn = !!user;
+    authButton.textContent = signedIn ? logoutLabel : loginLabel;
+    authButton.setAttribute("aria-label", signedIn ? logoutLabel : loginLabel);
+  });
+
+  authButton.addEventListener("click", async (event) => {
+    if (!signedIn) return;
+    event.preventDefault();
+    authButton.setAttribute("aria-busy", "true");
+    try {
+      await signOut(auth);
+    } finally {
+      authButton.removeAttribute("aria-busy");
+    }
+  });
+}
+</script>
 </body>
 </html>
+
