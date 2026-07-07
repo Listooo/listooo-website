@@ -317,6 +317,7 @@ footer a{
 <span class="account-email" data-auth-account hidden></span>
 </span>
 </a>
+<a class="nav-link signout-link" href="#" data-signout-action hidden>Sign out</a>
 <a class="nav-link nav-primary" href="/web-app/">Open web app</a>
 </nav>
 </header>
@@ -384,6 +385,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 const authButton = document.querySelector("[data-auth-action]");
+const signOutButton = document.querySelector("[data-signout-action]");
 if (authButton) {
   const app = initializeApp({
     apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
@@ -431,19 +433,22 @@ if (authButton) {
       avatarNode.textContent = signedIn && accountName ? accountName.trim().charAt(0).toUpperCase() : "?";
     }
     authButton.setAttribute("aria-label", signedIn && accountName
-      ? `${logoutLabel}. ${signedInLabel} als ${accountName}`
+      ? `${signedInLabel} als ${accountName}. Web-App öffnen.`
       : loginLabel);
-    authButton.title = signedIn && accountName ? `${logoutLabel}: ${accountName}` : loginLabel;
+    authButton.title = signedIn && accountName ? `${signedInLabel}: ${accountName}` : loginLabel;
+    if (signOutButton) {
+      signOutButton.hidden = !signedIn;
+      signOutButton.setAttribute("aria-label", signedIn && accountName ? `${logoutLabel}: ${accountName}` : logoutLabel);
+    }
   });
 
-  authButton.addEventListener("click", async (event) => {
-    if (!signedIn) return;
+  signOutButton?.addEventListener("click", async (event) => {
     event.preventDefault();
-    authButton.setAttribute("aria-busy", "true");
+    signOutButton.setAttribute("aria-busy", "true");
     try {
       await signOut(auth);
     } finally {
-      authButton.removeAttribute("aria-busy");
+      signOutButton.removeAttribute("aria-busy");
     }
   });
 }
