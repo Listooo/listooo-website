@@ -98,6 +98,10 @@ header{
 
 .nav-link{
   display:inline-flex;
+  max-width:260px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
   align-items:center;
   justify-content:center;
   min-height:38px;
@@ -347,8 +351,14 @@ if (authButton) {
 
   onAuthStateChanged(auth, (user) => {
     signedIn = !!user;
-    authButton.textContent = signedIn ? logoutLabel : loginLabel;
-    authButton.setAttribute("aria-label", signedIn ? logoutLabel : loginLabel);
+    const accountName = user?.email || user?.displayName || "";
+    authButton.textContent = signedIn && accountName
+      ? `${logoutLabel} ? ${accountName}`
+      : (signedIn ? logoutLabel : loginLabel);
+    authButton.setAttribute("aria-label", signedIn && accountName
+      ? `${logoutLabel}. Angemeldet als ${accountName}`
+      : (signedIn ? logoutLabel : loginLabel));
+    authButton.title = signedIn && accountName ? `Angemeldet als ${accountName}` : "";
   });
 
   authButton.addEventListener("click", async (event) => {
