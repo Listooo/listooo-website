@@ -99,10 +99,6 @@ header{
 
 .nav-link{
   display:inline-flex;
-  max-width:260px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
   align-items:center;
   justify-content:center;
   min-height:38px;
@@ -119,6 +115,60 @@ header{
   background:var(--accent);
   border-color:var(--accent);
   color:#0b1a10;
+}
+
+.account-chip{
+  gap:10px;
+  max-width:320px;
+  min-width:150px;
+  padding:7px 12px;
+  justify-content:flex-start;
+}
+
+.account-avatar{
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  background:rgba(52,199,89,.16);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:900;
+}
+
+.account-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1.1;
+}
+
+.account-title,
+.account-email{
+  max-width:235px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.account-email{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:650;
+}
+
+.account-chip.is-signed-in .account-avatar{
+  display:inline-flex;
+}
+
+.account-chip.is-signed-in:hover{
+  border-color:rgba(52,199,89,.7);
+  background:rgba(52,199,89,.08);
 }
 
 .hero{
@@ -260,7 +310,13 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Compte et application web">
-<a class="nav-link" href="/web-app/" data-auth-action data-login-label="Connexion" data-logout-label="Se déconnecter">Connexion</a>
+<a class="nav-link account-chip" href="/web-app/" data-auth-action data-login-label="Connexion" data-logout-label="Se déconnecter">
+<span class="account-avatar" data-auth-avatar aria-hidden="true">?</span>
+<span class="account-copy">
+<span class="account-title" data-auth-title>Connexion</span>
+<span class="account-email" data-auth-account hidden></span>
+</span>
+</a>
 <a class="nav-link nav-primary" href="/web-app/">Ouvrir la web app</a>
 </nav>
 </header>
@@ -285,11 +341,11 @@ CrÃ©ez des listes en quelques secondes et recevez des rappels au bon moment.
 </ul>
 
 <div class="cta">
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
+<a class="btn" href="https://play.google.com/store/apps/detailsid=com.adriano.listooo" target="_blank">
 Ouvrir sur Google Play
 </a>
 <a class="btn btn-secondary"
-   href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/view?usp=sharing"
+   href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/viewusp=sharing"
    target="_blank"
    rel="noopener">
 TÃ©lÃ©charger l'APK directement
@@ -337,29 +393,47 @@ if (authButton) {
     messagingSenderId: "301950999840",
   });
   const auth = getAuth(app);
-  const loginLabel = authButton.dataset.loginLabel || authButton.textContent.trim();
+  const titleNode = authButton.querySelector("[data-auth-title]") || authButton;
+  const accountNode = authButton.querySelector("[data-auth-account]");
+  const avatarNode = authButton.querySelector("[data-auth-avatar]");
+  const loginLabel = authButton.dataset.loginLabel || titleNode.textContent.trim();
   const logoutLabels = {
     de: "Abmelden",
     en: "Sign out",
-    es: "Cerrar sesión",
-    fr: "Se déconnecter",
+    es: "Cerrar sesi?n",
+    fr: "Se d?connecter",
     it: "Esci",
     pt: "Sair",
   };
+  const signedInLabels = {
+    de: "Angemeldet",
+    en: "Signed in",
+    es: "Conectado",
+    fr: "Connect?",
+    it: "Accesso",
+    pt: "Sess?o ativa",
+  };
   const lang = (document.documentElement.lang || "de").slice(0, 2);
   const logoutLabel = authButton.dataset.logoutLabel || logoutLabels[lang] || "Abmelden";
+  const signedInLabel = signedInLabels[lang] || signedInLabels.de;
   let signedIn = false;
 
   onAuthStateChanged(auth, (user) => {
     signedIn = !!user;
     const accountName = user?.email || user?.displayName || "";
-    authButton.textContent = signedIn && accountName
-      ? `${logoutLabel} ? ${accountName}`
-      : (signedIn ? logoutLabel : loginLabel);
+    authButton.classList.toggle("is-signed-in", signedIn);
+    titleNode.textContent = signedIn ? signedInLabel : loginLabel;
+    if (accountNode) {
+      accountNode.textContent = signedIn && accountName ? accountName : "";
+      accountNode.hidden = !(signedIn && accountName);
+    }
+    if (avatarNode) {
+      avatarNode.textContent = signedIn && accountName ? accountName.trim().charAt(0).toUpperCase() : "?";
+    }
     authButton.setAttribute("aria-label", signedIn && accountName
-      ? `${logoutLabel}. Angemeldet als ${accountName}`
-      : (signedIn ? logoutLabel : loginLabel));
-    authButton.title = signedIn && accountName ? `Angemeldet als ${accountName}` : "";
+      ? `${logoutLabel}. ${signedInLabel} als ${accountName}`
+      : loginLabel);
+    authButton.title = signedIn && accountName ? `${logoutLabel}: ${accountName}` : loginLabel;
   });
 
   authButton.addEventListener("click", async (event) => {
