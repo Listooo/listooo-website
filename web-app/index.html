@@ -35,6 +35,33 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <script>
+    (function () {
+      var resetKey = 'listooo-sw-reset-20260709-barcode';
+      if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
+        return;
+      }
+      window.localStorage.setItem(resetKey, '1');
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        return Promise.all(registrations.map(function (registration) {
+          return registration.unregister();
+        }));
+      }).then(function () {
+        if (!window.caches) {
+          return null;
+        }
+        return caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (key) {
+            return caches.delete(key);
+          }));
+        });
+      }).then(function () {
+        window.location.reload();
+      }).catch(function () {
+        // Continue with the current load if the browser blocks cache cleanup.
+      });
+    })();
+  </script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
