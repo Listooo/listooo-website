@@ -1,468 +1,76 @@
-<!doctype html>
-<html lang="de">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="color-scheme" content="light dark">
-  
-  <!-- ✓ CANONICAL -->
-<link rel="canonical" href="https://listooo.ch/" />
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-<!-- ✓ HREFLANG -->
-<link rel="alternate" hreflang="en" href="https://listooo.ch/index-en.html" />
-<link rel="alternate" hreflang="de" href="https://listooo.ch/" />
-<link rel="alternate" hreflang="es" href="https://listooo.ch/index-es.html" />
-<link rel="alternate" hreflang="fr" href="https://listooo.ch/index-fr.html" />
-<link rel="alternate" hreflang="it" href="https://listooo.ch/index-it.html" />
-<link rel="alternate" hreflang="pt" href="https://listooo.ch/index-pt.html" />
-<link rel="alternate" hreflang="x-default" href="https://listooo.ch/" />
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-<!-- Theme Color -->
-<meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
 
-<title>Listooo – Einkaufs- & Listen App für Android</title>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Listooo - Einkaufs- & Listen App">
+  <meta name="google-signin-client_id" content="301950999840-fpucnafs84qkdlig08cb9kt2vad7vte5.apps.googleusercontent.com">
+  <meta name="google-maps-api-key" content="">
 
-<meta name="description" content="Listooo ist eine kostenlose, werbefreie Einkaufs- und Listen-App für Android — mit Erinnerungen, Bildern, Farben, Backup und Synchronisierung." />
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Listooo">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
-<link rel="shortcut icon" href="/assets/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-<style>
-:root{
-  --bg:#F7F8FA;
-  --card:#FFFFFF;
-  --text:#111111;
-  --muted:#6B7280;
-  --accent:#34C759;
-  --border:#E5E7EB;
-}
-
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#232323;
-    --card:#2b2b2b;
-    --text:#ffffff;
-    --muted:#b9b9b9;
-    --border:#3a3a3a;
-  }
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.55;
-}
-
-.wrap{max-width:980px;margin:0 auto;padding:48px 20px 32px}
-
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:28px
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:var(--text)
-}
-
-.logo{
-  width:44px;height:44px;border-radius:12px;
-  background:var(--card);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center
-}
-
-.logo img{
-  width:30px;height:30px;
-  object-fit:contain;border-radius:8px
-}
-.top-actions{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.nav-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:38px;
-  padding:9px 14px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-}
-
-.nav-primary{
-  background:var(--accent);
-  border-color:var(--accent);
-  color:#0b1a10;
-}
-
-.account-chip{
-  gap:10px;
-  max-width:320px;
-  min-width:150px;
-  padding:9px 14px;
-  justify-content:flex-start;
-}
-
-.account-status{
-  cursor:default;
-  user-select:text;
-  pointer-events:none;
-  background:rgba(255,255,255,.025);
-}
-
-.account-avatar{
-  width:26px;
-  height:26px;
-  border-radius:999px;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 auto;
-  background:rgba(52,199,89,.16);
-  color:var(--accent);
-  font-size:13px;
-  font-weight:900;
-}
-
-.account-copy{
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  line-height:1.22;
-}
-
-.account-title,
-.account-email{
-  max-width:235px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.account-email{
-  margin-top:3px;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:650;
-  line-height:1.28;
-  padding-bottom:1px;
-}
-
-.account-chip.is-signed-in .account-avatar{
-  display:inline-flex;
-}
-
-.account-chip.is-signed-in:hover{
-  border-color:rgba(52,199,89,.7);
-  background:rgba(52,199,89,.08);
-}
-
-.hero{
-  display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:26px;
-  align-items:start;
-}
-
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr}
-}
-@media (max-width:640px){
-  header{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .top-actions{
-    justify-content:flex-start;
-    width:100%;
-  }
-
-  .nav-link{
-    min-height:36px;
-    padding:8px 12px;
-    font-size:14px;
-  }
-}
-
-h1{margin:0 0 10px;font-size:42px}
-
-.tagline{
-  margin:0 0 12px;
-  color:var(--accent);
-  font-weight:800;
-}
-
-.sub{
-  margin:0 0 18px;
-  color:var(--muted);
-  font-size:18px;
-}
-
-.bullets{
-  list-style:none;
-  padding:0;
-  display:grid;
-  gap:10px;
-}
-
-.bullets li{display:flex;gap:10px}
-
-.dot{
-  width:10px;height:10px;
-  background:var(--accent);
-  border-radius:99px;
-  margin-top:7px;
-}
-
-.cta{
-  margin-top:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-}
-
-.btn{
-  display:inline-flex;
-  padding:12px 16px;
-  border-radius:14px;
-  background:var(--accent);
-  color:#0b1a10;
-  text-decoration:none;
-  font-weight:600;
-}
-
-.btn-secondary{
-  background:transparent;
-  color:var(--text);
-  border:1px solid var(--border);
-}
-
-.download-note{
-  margin:4px 0 0;
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* CARD */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:16px;
-}
-
-/* APP IMAGE */
-.app-preview{padding:0;overflow:hidden}
-
-.app-preview picture{display:block}
-
-.homepage-image{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:18px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:34px;
-  padding-top:18px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-footer a{
-  color:var(--muted);
-  text-decoration:none;
-  margin-right:12px;
-}
-</style>
+  <title>Listooo</title>
+  <link rel="manifest" href="manifest.json">
 </head>
-
 <body>
-<div class="wrap">
+  <script>
+    (function () {
+      var resetKey = 'listooo-sw-reset-20260709-barcode';
+      if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
+        return;
+      }
+      window.localStorage.setItem(resetKey, '1');
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        return Promise.all(registrations.map(function (registration) {
+          return registration.unregister();
+        }));
+      }).then(function () {
+        if (!window.caches) {
+          return null;
+        }
+        return caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (key) {
+            return caches.delete(key);
+          }));
+        });
+      }).then(function () {
+        window.location.reload();
+      }).catch(function () {
+        // Continue with the current load if the browser blocks cache cleanup.
+      });
+    })();
+  </script>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-<header>
-<a class="brand" href="/">
-<div class="logo"><img src="/assets/logo.png"></div>
-<div>
-<div style="font-weight:800">Listooo</div>
-<div style="color:var(--muted)">Einkaufs- & Listen App</div>
-</div>
-</a>
-<nav class="top-actions" aria-label="Konto und Web-App">
-<div class="nav-link account-chip account-status" data-auth-action data-login-label="Anmelden" data-logout-label="Abmelden" role="status" aria-live="polite">
-<span class="account-avatar" data-auth-avatar aria-hidden="true">✓</span>
-<span class="account-copy">
-<span class="account-title" data-auth-title>Anmelden</span>
-<span class="account-email" data-auth-account hidden></span>
-</span>
-</div>
-<a class="nav-link signout-link" href="#" data-signout-action hidden>Abmelden</a>
-<a class="nav-link nav-primary" href="/web-app/">Web-App öffnen</a>
-</nav>
-</header>
-
-<section class="hero">
-
-<div>
-<h1>Listen. Einfach. Smart.</h1>
-
-<p class="tagline">100% kostenlos • Keine Werbung • Kein Abo</p>
-
-<p class="sub">
-Listooo hilft dir beim Einkaufen und organisiert deinen Alltag.
-Erstelle Listen in Sekunden und erhalte Erinnerungen zur richtigen Zeit.
-</p>
-
-<ul class="bullets">
-<li><span class="dot"></span>Listen sofort erstellen</li>
-<li><span class="dot"></span>Bilder & Farben</li>
-<li><span class="dot"></span>Erinnerungen</li>
-<li><span class="dot"></span>Backup & Synchronisierung</li>
-</ul>
-
-<div class="cta">
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
-Im Google Play Store öffnen
-</a>
-<a class="btn btn-secondary"
-   href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/view?usp=sharing"
-   target="_blank"
-   rel="noopener">
-APK direkt herunterladen
-</a>
-</div>
-<p class="download-note">F&uuml;r Android. Installation aus unbekannten Quellen muss erlaubt werden.</p>
-</div>
-
-<!-- APP IMAGE -->
-<div class="card app-preview">
-<picture>
-<source srcset="/assets/homepage/homepage_bild_de.png" media="(prefers-color-scheme: dark)">
-<img class="homepage-image" src="/assets/homepage/homepage_bild_hell_de.png" alt="Listooo App Vorschau" loading="eager">
-</picture>
-</div>
-
-</section>
-
-<footer>
-<div>© <span id="y"></span> Listooo</div>
-<div>
-<a href="/privacy-de.html">Datenschutz</a>
-<a href="/terms-de.html">Nutzungsbedingungen</a>
-<a href="/delete-account-de.html">Konto löschen</a>
-<a href="mailto:support@listooo.ch">support@listooo.ch</a>
-</div>
-</footer>
-
-</div>
-
-<script defer>
-document.getElementById("y").textContent=new Date().getFullYear()
-</script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-
-const authButton = document.querySelector("[data-auth-action]");
-const signOutButton = document.querySelector("[data-signout-action]");
-if (authButton) {
-  const app = initializeApp({
-    apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
-    authDomain: "listooo.firebaseapp.com",
-    projectId: "listooo",
-    appId: "1:301950999840:web:15de276c4a21f9078dcb45",
-    messagingSenderId: "301950999840",
-  });
-  const auth = getAuth(app);
-  const titleNode = authButton.querySelector("[data-auth-title]") || authButton;
-  const accountNode = authButton.querySelector("[data-auth-account]");
-  const avatarNode = authButton.querySelector("[data-auth-avatar]");
-  const loginLabel = authButton.dataset.loginLabel || titleNode.textContent.trim();
-  const logoutLabels = {
-    de: "Abmelden",
-    en: "Sign out",
-    es: "Cerrar sesión",
-    fr: "Se déconnecter",
-    it: "Esci",
-    pt: "Sair",
-  };
-  const signedInLabels = {
-    de: "Angemeldet",
-    en: "Signed in",
-    es: "Conectado",
-    fr: "Connecté",
-    it: "Accesso",
-    pt: "Sessão ativa",
-  };
-  const lang = (document.documentElement.lang || "de").slice(0, 2);
-  const logoutLabel = authButton.dataset.logoutLabel || logoutLabels[lang] || "Abmelden";
-  const signedInLabel = signedInLabels[lang] || signedInLabels.de;
-  let signedIn = false;
-
-  onAuthStateChanged(auth, (user) => {
-    signedIn = !!user;
-    const accountName = user?.email || user?.displayName || "";
-    authButton.classList.toggle("is-signed-in", signedIn);
-    titleNode.textContent = signedIn ? signedInLabel : loginLabel;
-    if (accountNode) {
-      accountNode.textContent = signedIn && accountName ? accountName : "";
-      accountNode.hidden = !(signedIn && accountName);
-    }
-    if (avatarNode) {
-      avatarNode.textContent = signedIn && accountName ? accountName.trim().charAt(0).toUpperCase() : "?";
-    }
-    authButton.setAttribute("aria-label", signedIn && accountName
-      ? `${signedInLabel} als ${accountName}`
-      : loginLabel);
-    authButton.title = signedIn && accountName ? `${signedInLabel}: ${accountName}` : loginLabel;
-    if (signOutButton) {
-      signOutButton.hidden = !signedIn;
-      signOutButton.setAttribute("aria-label", signedIn && accountName ? `${logoutLabel}: ${accountName}` : logoutLabel);
-    }
-  });
-
-  signOutButton?.addEventListener("click", async (event) => {
-    event.preventDefault();
-    signOutButton.setAttribute("aria-busy", "true");
-    try {
-      await signOut(auth);
-    } finally {
-      signOutButton.removeAttribute("aria-busy");
-    }
-  });
-}
-</script>
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
 
