@@ -37,7 +37,18 @@
 <body>
   <script>
     (function () {
-      var resetKey = 'listooo-sw-reset-20260711-desktop-install';
+      window.listoooDeferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', function (event) {
+        event.preventDefault();
+        window.listoooDeferredInstallPrompt = event;
+      });
+      window.addEventListener('appinstalled', function () {
+        window.listoooDeferredInstallPrompt = null;
+      });
+    })();
+
+    (function () {
+      var resetKey = 'listooo-sw-reset-20260711-install-prompt';
       if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
         return;
       }
@@ -70,7 +81,7 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script src="flutter_bootstrap.js?v=20260711-desktop-install" async></script>
+  <script src="flutter_bootstrap.js?v=20260711-install-prompt" async></script>
 </body>
 </html>
 
