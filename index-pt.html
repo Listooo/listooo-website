@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light dark">
 
-<!-- ✅ CANONICAL -->
+<!-- ✓ CANONICAL -->
 <link rel="canonical" href="https://listooo.ch/index-pt.html" />
 
-<!-- ✅ HREFLANG -->
+<!-- ✓ HREFLANG -->
 <link rel="alternate" hreflang="en" href="https://listooo.ch/index-en.html" />
 <link rel="alternate" hreflang="de" href="https://listooo.ch/" />
 <link rel="alternate" hreflang="es" href="https://listooo.ch/index-es.html" />
@@ -115,6 +115,69 @@ header{
   background:var(--accent);
   border-color:var(--accent);
   color:#0b1a10;
+}
+
+.account-chip{
+  gap:10px;
+  max-width:320px;
+  min-width:150px;
+  padding:9px 14px;
+  justify-content:flex-start;
+}
+
+.account-status{
+  cursor:default;
+  user-select:text;
+  pointer-events:none;
+  background:rgba(255,255,255,.025);
+}
+
+.account-avatar{
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  background:rgba(52,199,89,.16);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:900;
+}
+
+.account-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1.22;
+}
+
+.account-title,
+.account-email{
+  max-width:235px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.account-email{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:650;
+  line-height:1.28;
+  padding-bottom:1px;
+}
+
+.account-chip.is-signed-in .account-avatar{
+  display:inline-flex;
+}
+
+.account-chip.is-signed-in:hover{
+  border-color:rgba(52,199,89,.7);
+  background:rgba(52,199,89,.08);
 }
 
 .hero{
@@ -256,7 +319,14 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Conta e app web">
-<a class="nav-link" href="/web-app/">Entrar</a>
+<div class="nav-link account-chip account-status" data-auth-action data-login-label="Entrar" data-logout-label="Sair" role="status" aria-live="polite">
+<span class="account-avatar" data-auth-avatar aria-hidden="true">✓</span>
+<span class="account-copy">
+<span class="account-title" data-auth-title>Entrar</span>
+<span class="account-email" data-auth-account hidden></span>
+</span>
+</div>
+<a class="nav-link signout-link" href="#" data-signout-action hidden>Sair</a>
 <a class="nav-link nav-primary" href="/web-app/">Abrir web app</a>
 </nav>
 </header>
@@ -319,5 +389,79 @@ Transferir APK diretamente
 <script defer>
 document.getElementById("y").textContent=new Date().getFullYear()
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const authButton = document.querySelector("[data-auth-action]");
+const signOutButton = document.querySelector("[data-signout-action]");
+if (authButton) {
+  const app = initializeApp({
+    apiKey: "AIzaSyAi6V0zSBR4g9ch1nDiU1nZmVmkFoHClFk",
+    authDomain: "listooo.firebaseapp.com",
+    projectId: "listooo",
+    appId: "1:301950999840:web:15de276c4a21f9078dcb45",
+    messagingSenderId: "301950999840",
+  });
+  const auth = getAuth(app);
+  const titleNode = authButton.querySelector("[data-auth-title]") || authButton;
+  const accountNode = authButton.querySelector("[data-auth-account]");
+  const avatarNode = authButton.querySelector("[data-auth-avatar]");
+  const loginLabel = authButton.dataset.loginLabel || titleNode.textContent.trim();
+  const logoutLabels = {
+    de: "Abmelden",
+    en: "Sign out",
+    es: "Cerrar sesión",
+    fr: "Se déconnecter",
+    it: "Esci",
+    pt: "Sair",
+  };
+  const signedInLabels = {
+    de: "Angemeldet",
+    en: "Signed in",
+    es: "Conectado",
+    fr: "Connecté",
+    it: "Accesso",
+    pt: "Sessão ativa",
+  };
+  const lang = (document.documentElement.lang || "de").slice(0, 2);
+  const logoutLabel = authButton.dataset.logoutLabel || logoutLabels[lang] || "Abmelden";
+  const signedInLabel = signedInLabels[lang] || signedInLabels.de;
+  let signedIn = false;
+
+  onAuthStateChanged(auth, (user) => {
+    signedIn = !!user;
+    const accountName = user?.email || user?.displayName || "";
+    authButton.classList.toggle("is-signed-in", signedIn);
+    titleNode.textContent = signedIn ? signedInLabel : loginLabel;
+    if (accountNode) {
+      accountNode.textContent = signedIn && accountName ? accountName : "";
+      accountNode.hidden = !(signedIn && accountName);
+    }
+    if (avatarNode) {
+      avatarNode.textContent = signedIn && accountName ? accountName.trim().charAt(0).toUpperCase() : "?";
+    }
+    authButton.setAttribute("aria-label", signedIn && accountName
+      ? `${signedInLabel} als ${accountName}`
+      : loginLabel);
+    authButton.title = signedIn && accountName ? `${signedInLabel}: ${accountName}` : loginLabel;
+    if (signOutButton) {
+      signOutButton.hidden = !signedIn;
+      signOutButton.setAttribute("aria-label", signedIn && accountName ? `${logoutLabel}: ${accountName}` : logoutLabel);
+    }
+  });
+
+  signOutButton?.addEventListener("click", async (event) => {
+    event.preventDefault();
+    signOutButton.setAttribute("aria-busy", "true");
+    try {
+      await signOut(auth);
+    } finally {
+      signOutButton.removeAttribute("aria-busy");
+    }
+  });
+}
+</script>
 </body>
 </html>
+
