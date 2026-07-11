@@ -26,13 +26,13 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Listooo">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png?v=20260711-rounded-pwa-icon">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png?v=20260711-rounded-pwa-icon"/>
 
   <title>Listooo</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json?v=20260711-rounded-pwa-icon">
 </head>
 <body>
   <script>
@@ -48,7 +48,7 @@
     })();
 
     (function () {
-      var resetKey = 'listooo-sw-reset-20260711-web-map-single-marker';
+      var resetKey = 'listooo-sw-reset-20260711-rounded-pwa-icon';
       if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
         return;
       }
@@ -81,7 +81,7 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script src="flutter_bootstrap.js?v=20260711-web-map-single-marker" async></script>
+  <script src="flutter_bootstrap.js?v=20260711-rounded-pwa-icon" async></script>
 </body>
 </html>
 
