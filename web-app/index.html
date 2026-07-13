@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/">
+  <base href="/web-app/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -37,7 +37,7 @@
 <body>
   <script>
     (function () {
-    var resetKey = 'listooo-sw-reset-20260712-webapp-basehref';
+    var resetKey = 'listooo-sw-reset-20260713-webapp-basehref-fix';
       if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
         return;
       }
@@ -70,7 +70,7 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="flutter_bootstrap.js?v=20260713-webapp-basehref-fix" async></script>
 </body>
 </html>
 
