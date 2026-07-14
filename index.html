@@ -3,6 +3,33 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>
+  (() => {
+    const languagePages = {
+      de: '/',
+      en: '/index-en.html',
+      es: '/index-es.html',
+      fr: '/index-fr.html',
+      it: '/index-it.html',
+      pt: '/index-pt.html',
+    };
+    const browserLanguage = (navigator.language || 'en')
+      .toLowerCase()
+      .split('-')[0];
+    const language = Object.prototype.hasOwnProperty.call(
+      languagePages,
+      browserLanguage,
+    )
+      ? browserLanguage
+      : 'en';
+    const targetPath = languagePages[language];
+    const currentPath = location.pathname.replace(/\/index\.html$/, '/');
+
+    if (currentPath !== targetPath) {
+      location.replace(`${targetPath}${location.search}${location.hash}`);
+    }
+  })();
+</script>
 <meta name="color-scheme" content="light dark">
   
   <!-- ✓ CANONICAL -->
