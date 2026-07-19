@@ -297,16 +297,16 @@ h1{margin:0 0 10px;font-size:42px}
 }
 
 .apk-version{
-  margin-top:6px;
-  color:var(--text);
-  font-size:14px;
-  font-weight:700;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:500;
+  opacity:.72;
 }
 
-.apk-download{
-  display:flex;
+.apk-download-button{
   flex-direction:column;
   align-items:center;
+  gap:2px;
 }
 
 /* CARD */
@@ -395,15 +395,13 @@ Erstelle Listen in Sekunden und erhalte Erinnerungen zur richtigen Zeit.
 <a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
 Im Google Play Store öffnen
 </a>
-<div class="apk-download">
-<a class="btn btn-secondary"
+<a class="btn btn-secondary apk-download-button"
    href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/view?usp=sharing"
    target="_blank"
    rel="noopener">
-APK direkt herunterladen
-</a>
+<span>APK direkt herunterladen</span>
 <span class="apk-version">Aktuelle APK: Version 1.2.13 (137)</span>
-</div>
+</a>
 </div>
 <p class="download-note">F&uuml;r Android. Installation aus unbekannten Quellen muss erlaubt werden.</p>
 </div>

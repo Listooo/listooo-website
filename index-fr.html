@@ -269,16 +269,16 @@ h1{margin:0 0 10px;font-size:42px}
 }
 
 .apk-version{
-  margin-top:6px;
-  color:var(--text);
-  font-size:14px;
-  font-weight:700;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:500;
+  opacity:.72;
 }
 
-.apk-download{
-  display:flex;
+.apk-download-button{
   flex-direction:column;
   align-items:center;
+  gap:2px;
 }
 
 /* CARD */
@@ -367,15 +367,13 @@ Créez des listes en quelques secondes et recevez des rappels au bon moment.
 <a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank">
 Ouvrir sur Google Play
 </a>
-<div class="apk-download">
-<a class="btn btn-secondary"
+<a class="btn btn-secondary apk-download-button"
    href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/view?usp=sharing"
    target="_blank"
    rel="noopener">
-Télécharger l'APK directement
-</a>
+<span>Télécharger l'APK directement</span>
 <span class="apk-version">APK actuelle : version 1.2.13 (137)</span>
-</div>
+</a>
 </div>
 <p class="download-note">Pour Android. L'installation depuis des sources inconnues doit &ecirc;tre autoris&eacute;e.</p>
 </div>
