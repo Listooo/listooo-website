@@ -36,7 +36,7 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"77e2e94772b6eb43759e34ed1ad7da4674e19cab","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
 
-const listoooWebRelease = '20260718-active-language-selection';
+const listoooWebRelease = '20260719-profile-background-editor';
 for (const build of _flutter.buildConfig.builds) {
   if (build.mainJsPath) {
     build.mainJsPath = `${build.mainJsPath}?v=${listoooWebRelease}`;
