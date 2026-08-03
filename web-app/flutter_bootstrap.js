@@ -36,7 +36,7 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"69c8c61792f04cc809dfef0c910414fb9afc06cd","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
 
-const listoooWebRelease = '20260803-about-sheet-web-fix-v2';
+const listoooWebRelease = '20260803-profile-sheet-cleanup';
 for (const build of _flutter.buildConfig.builds) {
   if (build.mainJsPath) {
     build.mainJsPath = `${build.mainJsPath}?v=${listoooWebRelease}`;
