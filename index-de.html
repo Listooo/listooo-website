@@ -466,11 +466,33 @@ if (authButton) {
     }
   });
 
+  const markWebAppSignedOut = () => {
+    const ownerKey = "session_local_data_owner_v1";
+    const preserveGuestData = localStorage.getItem(ownerKey) === "guest";
+    const dataKeys = [
+      "lists_overview_state_v1", "cards_state_v1", "deleted_cards_state_v1",
+      "list_location_reminders_v1", "shared_list_sync_state_v1",
+      "notification_history_items_v1", "notification_history_deleted_v1",
+      "notification_history_last_open_v1",
+    ];
+    if (!preserveGuestData) {
+      for (const key of dataKeys) {
+        localStorage.removeItem(`${key}_session_local`);
+        localStorage.removeItem(`session_safety_snapshot_v1_${key}_local`);
+      }
+      localStorage.removeItem(ownerKey);
+    }
+    localStorage.setItem("session_ignore_legacy_local_data_v1", "true");
+    localStorage.setItem("session_last_account_signed_out_v1", "true");
+    for (const key of ["session_last_account_uid_v1", "session_last_account_email_v1", "session_last_account_display_name_v1", "session_last_account_photo_url_v1"]) localStorage.removeItem(key);
+  };
+
   signOutButton?.addEventListener("click", async (event) => {
     event.preventDefault();
     signOutButton.setAttribute("aria-busy", "true");
     try {
       await signOut(auth);
+      markWebAppSignedOut();
     } finally {
       signOutButton.removeAttribute("aria-busy");
     }
