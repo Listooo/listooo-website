@@ -52,6 +52,7 @@
 }
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 
 body{
   margin:0;
@@ -127,11 +128,10 @@ header{
 }
 
 .account-status{
-  cursor:default;
-  user-select:text;
-  pointer-events:none;
+  cursor:pointer;
   background:rgba(255,255,255,.025);
 }
+.account-status.is-signed-in{cursor:default;user-select:text;pointer-events:none}
 
 .account-avatar{
   width:26px;
@@ -333,13 +333,13 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Konto und Web-App">
-<div class="nav-link account-chip account-status" data-auth-action data-login-label="Anmelden" data-logout-label="Abmelden" role="status" aria-live="polite">
+<a class="nav-link account-chip account-status" href="/web-app/?lang=de&amp;login=1" data-auth-action data-login-label="Anmelden" data-logout-label="Abmelden" role="status" aria-live="polite">
 <span class="account-avatar" data-auth-avatar aria-hidden="true">✓</span>
 <span class="account-copy">
 <span class="account-title" data-auth-title>Anmelden</span>
 <span class="account-email" data-auth-account hidden></span>
 </span>
-</div>
+</a>
 <a class="nav-link signout-link" href="#" data-signout-action hidden>Abmelden</a>
 <a class="nav-link nav-primary" href="/web-app/?lang=de">Web-App öffnen</a>
 </nav>
