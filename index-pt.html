@@ -51,6 +51,7 @@
 }
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 
 body{
   margin:0;
@@ -126,11 +127,10 @@ header{
 }
 
 .account-status{
-  cursor:default;
-  user-select:text;
-  pointer-events:none;
+  cursor:pointer;
   background:rgba(255,255,255,.025);
 }
+.account-status.is-signed-in{cursor:default;user-select:text;pointer-events:none}
 
 .account-avatar{
   width:26px;
@@ -332,7 +332,7 @@ footer a{
 </div>
 </a>
 <nav class="top-actions" aria-label="Conta e app web">
-<div class="nav-link account-chip account-status" data-auth-action data-login-label="Entrar" data-logout-label="Sair" role="status" aria-live="polite">
+<a class="nav-link account-chip account-status" href="/web-app/?lang=pt-PT&amp;login=1" data-auth-action data-login-label="Entrar" data-logout-label="Sair" role="status" aria-live="polite">
 <span class="account-avatar" data-auth-avatar aria-hidden="true">✓</span>
 <span class="account-copy">
 <span class="account-title" data-auth-title>Entrar</span>
@@ -372,8 +372,9 @@ Abrir no Google Play
    target="_blank"
    rel="noopener">
 <span>Transferir APK diretamente</span>
+<span class="apk-version">Listooo-version 139 (1.2.15).apk</span>
 </a>
-</div>
+</a>
 <p class="download-note">Para Android. A instala&ccedil;&atilde;o de fontes desconhecidas deve ser permitida.</p>
 </div>
 
@@ -381,7 +382,7 @@ Abrir no Google Play
 <div class="card app-preview">
 <picture>
 <source srcset="/assets/homepage/homepage_bild_pt.png" media="(prefers-color-scheme: dark)">
-<img class="homepage-image" src="/assets/homepage/homepage_bild_hell_pt.png" alt="Prévia da aplicação Listooo" loading="eager">
+<img class="homepage-image" src="/assets/homepage/homepage_bild_hell_pt.png" alt="Previa do app Listooo" loading="eager">
 </picture>
 </div>
 
@@ -465,25 +466,11 @@ if (authButton) {
     }
   });
 
-  const markWebAppSignedOut = () => {
-    const ownerKey = "session_local_data_owner_v1";
-    const preserveGuestData = localStorage.getItem(ownerKey) === "guest";
-    const dataKeys = ["lists_overview_state_v1", "cards_state_v1", "deleted_cards_state_v1", "list_location_reminders_v1", "shared_list_sync_state_v1", "notification_history_items_v1", "notification_history_deleted_v1", "notification_history_last_open_v1"];
-    if (!preserveGuestData) {
-      for (const key of dataKeys) { localStorage.removeItem(`${key}_session_local`); localStorage.removeItem(`session_safety_snapshot_v1_${key}_local`); }
-      localStorage.removeItem(ownerKey);
-    }
-    localStorage.setItem("session_ignore_legacy_local_data_v1", "true");
-    localStorage.setItem("session_last_account_signed_out_v1", "true");
-    for (const key of ["session_last_account_uid_v1", "session_last_account_email_v1", "session_last_account_display_name_v1", "session_last_account_photo_url_v1"]) localStorage.removeItem(key);
-  };
-
   signOutButton?.addEventListener("click", async (event) => {
     event.preventDefault();
     signOutButton.setAttribute("aria-busy", "true");
     try {
       await signOut(auth);
-      markWebAppSignedOut();
     } finally {
       signOutButton.removeAttribute("aria-busy");
     }
@@ -492,3 +479,4 @@ if (authButton) {
 </script>
 </body>
 </html>
+
