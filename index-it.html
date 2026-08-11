@@ -239,11 +239,12 @@ h1{margin:0 0 10px;font-size:42px}
 
 .cta{
   margin-top:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
 }
+
+.store-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:620px}
+.btn.store-button{justify-content:center;min-height:52px;background:#fff;color:#111;border:1px solid rgba(255,255,255,.35)}
+.btn.apple-store-button{background:#0a84ff;color:#fff;border-color:#0a84ff}
+.apk-row{margin-top:10px}
 
 .btn{
   display:inline-flex;
@@ -279,10 +280,14 @@ h1{margin:0 0 10px;font-size:42px}
 }
 
 .apk-download-button{
-  flex-direction:column;
-  align-items:center;
+  display:inline-flex;
+  padding:9px 13px;
+  border-radius:11px;
+  font-size:14px;
   gap:2px;
 }
+
+@media (max-width:640px){.store-buttons{grid-template-columns:1fr}}
 
 /* CARD */
 .card{
@@ -367,20 +372,24 @@ Crea liste in pochi secondi e ricevi promemoria al momento giusto.
 </ul>
 
 <div class="cta">
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank" rel="noopener">
-<img class="store-icon" src="https://cdn.simpleicons.org/googleplay/0B1A10" alt="" aria-hidden="true">
+<div class="store-buttons">
+<a class="btn store-button" href="https://play.google.com/store/apps/details?id=com.adriano.listooo" target="_blank" rel="noopener">
+<img class="store-icon" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Play_2022_icon.svg" alt="" aria-hidden="true">
 Apri su Google Play
 </a>
-<a class="btn" href="https://apps.apple.com/ch/app/listooo/id6794677538" target="_blank" rel="noopener">
-<img class="store-icon" src="https://cdn.simpleicons.org/apple/0B1A10" alt="" aria-hidden="true">
+<a class="btn store-button apple-store-button" href="https://apps.apple.com/ch/app/listooo/id6794677538" target="_blank" rel="noopener">
+<img class="store-icon" src="https://cdn.simpleicons.org/apple/FFFFFF" alt="" aria-hidden="true">
 Apri nell’Apple App Store
 </a>
+</div>
+<div class="apk-row">
 <a class="btn btn-secondary apk-download-button"
    href="https://drive.google.com/file/d/12j8bdxYoyKQk86L9AN3PWilFK2fZfyD4/view?usp=sharing"
    target="_blank"
    rel="noopener">
 <span>Scarica APK direttamente</span>
 </a>
+</div>
 </div>
 <p class="download-note">Alternativa per Android: l’installazione diretta dell’APK richiede di consentire fonti sconosciute.</p>
 </div>
