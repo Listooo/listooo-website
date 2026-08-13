@@ -327,6 +327,14 @@ footer a{
   text-decoration:none;
   margin-right:12px;
 }
+.features{margin:54px 0 10px;padding-top:34px;border-top:1px solid var(--border)}
+.features>h2{margin:0 0 8px;font-size:30px;line-height:1.25}
+.features-intro{max-width:760px;margin:0 0 22px;color:var(--muted);font-size:17px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.feature-item{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--card)}
+.feature-item h3{margin:0 0 7px;font-size:19px}.feature-item p{margin:0;color:var(--muted)}
+.feature-icon{display:grid;place-items:center;width:44px;height:44px;margin-bottom:13px;border-radius:14px;background:rgba(52,211,102,.14);font-size:24px;line-height:1}
+@media (max-width:640px){.feature-grid{grid-template-columns:1fr}.features{margin-top:38px}.features>h2{font-size:26px}}
 </style>
 </head>
 
@@ -368,9 +376,10 @@ Erstelle Listen in Sekunden und erhalte Erinnerungen zur richtigen Zeit.
 
 <ul class="bullets">
 <li><span class="dot"></span>Listen sofort erstellen</li>
-<li><span class="dot"></span>Bilder & Farben</li>
-<li><span class="dot"></span>Erinnerungen</li>
-<li><span class="dot"></span>Backup & Synchronisierung</li>
+<li><span class="dot"></span>Notizen, Bilder & Sprachnotizen</li>
+<li><span class="dot"></span>Zeit- & Ortserinnerungen</li>
+<li><span class="dot"></span>Live teilen & synchronisieren</li>
+<li><span class="dot"></span>Karten, Belege & Garantien</li>
 </ul>
 
 <div class="cta">
@@ -404,6 +413,19 @@ Im Apple App Store öffnen
 </picture>
 </div>
 
+</section>
+
+<section class="features" aria-labelledby="features-title">
+<h2 id="features-title">Alles für deinen Alltag – in einer App</h2>
+<p class="features-intro">Von Einkaufs- und Aufgabenlisten bis zu Erinnerungen, Karten und Live-Synchronisierung: Listooo hält alles übersichtlich und auf allen Geräten aktuell.</p>
+<div class="feature-grid">
+<article class="feature-item"><div class="feature-icon">🛒</div><h3>Einkaufslisten erstellen</h3><p>Erstelle übersichtliche Listen mit Notizen, Bildern und Farben.</p></article>
+<article class="feature-item"><div class="feature-icon">📝</div><h3>To-do-Listen und Aufgaben</h3><p>Organisiere Alltag, Arbeit, Reisen und Haushalt einfach an einem Ort.</p></article>
+<article class="feature-item"><div class="feature-icon">📍</div><h3>Erinnerungen am richtigen Ort</h3><p>Lass dich zum Beispiel beim Eintreffen in einem Geschäft an eine Liste erinnern.</p></article>
+<article class="feature-item"><div class="feature-icon">⏰</div><h3>Zeit- und Fälligkeitserinnerungen</h3><p>Vergiss keine wichtigen Einkäufe, Aufgaben oder Termine mehr.</p></article>
+<article class="feature-item"><div class="feature-icon">👥</div><h3>Live zusammenarbeiten und synchronisieren</h3><p>Änderungen erscheinen sofort bei Familie, Freunden und auf allen Geräten.</p></article>
+<article class="feature-item"><div class="feature-icon">💳</div><h3>Karten, Belege und Garantien</h3><p>Bewahre Kundenkarten, Belege und Garantien sicher an einem Ort auf.</p></article>
+</div>
 </section>
 
 <footer>

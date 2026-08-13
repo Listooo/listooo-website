@@ -342,6 +342,7 @@ footer a{
 .features-intro{max-width:760px;margin:0 0 22px;color:var(--muted);font-size:17px}
 .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .feature-item{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--card)}
+.feature-icon{display:grid;place-items:center;width:44px;height:44px;margin-bottom:13px;border-radius:14px;background:rgba(52,211,102,.14);font-size:24px;line-height:1}
 .feature-item h3{margin:0 0 7px;font-size:19px}
 .feature-item p{margin:0;color:var(--muted)}
 @media (max-width:640px){.feature-grid{grid-template-columns:1fr}.features{margin-top:38px}.features>h2{font-size:26px}}
@@ -386,9 +387,10 @@ Create lists in seconds and get reminders at the right time.
 
 <ul class="bullets">
 <li><span class="dot"></span>Create lists instantly</li>
-<li><span class="dot"></span>Images & colors</li>
-<li><span class="dot"></span>Reminders</li>
-<li><span class="dot"></span>Backup & sync</li>
+<li><span class="dot"></span>Notes, images & voice notes</li>
+<li><span class="dot"></span>Time & location reminders</li>
+<li><span class="dot"></span>Share & sync live</li>
+<li><span class="dot"></span>Cards, receipts & warranties</li>
 </ul>
 
 <div class="cta">
@@ -425,13 +427,15 @@ Open in the Apple App Store
 </section>
 
 <section class="features" aria-labelledby="features-title">
-<h2 id="features-title">More than a shopping list: organize tasks and reminders</h2>
-<p class="features-intro">Listooo combines shopping lists, to-do lists and reminders in one simple app. Keep groceries, everyday tasks and important plans organized in one place.</p>
+<h2 id="features-title">Everything for your day – in one app</h2>
+<p class="features-intro">From shopping and to-do lists to reminders, cards and live syncing: Listooo keeps everything organized and up to date on all your devices.</p>
 <div class="feature-grid">
-<article class="feature-item"><h3>Create shopping lists</h3><p>Make clear grocery lists and shopping checklists. Add notes, pictures and colors to keep every item easy to recognize.</p></article>
-<article class="feature-item"><h3>To-do lists and tasks</h3><p>Use Listooo as a task list or checklist for home, work and travel, then check off each item when it is done.</p></article>
-<article class="feature-item"><h3>Reminders at the right time</h3><p>Set reminders for list items and important tasks so you do not forget groceries, errands or appointments.</p></article>
-<article class="feature-item"><h3>Share and sync lists</h3><p>Share collaborative lists with family or friends and keep your content synchronized across iPhone, Android and the web.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">🛒</span><h3>Create shopping lists</h3><p>Make clear shopping lists with notes, images and colors.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">📝</span><h3>To-do lists and tasks</h3><p>Organize tasks for everyday life, work, travel and home.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">📍</span><h3>Reminders at the right place</h3><p>Get reminded about a list when you arrive at a store, for example.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">⏰</span><h3>Time and due-date reminders</h3><p>Never miss shopping, tasks or important appointments.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">👥</span><h3>Collaborate and sync live</h3><p>Changes appear instantly for family, friends and on all devices.</p></article>
+<article class="feature-item"><span class="feature-icon" aria-hidden="true">💳</span><h3>Cards, receipts and warranties</h3><p>Keep loyalty cards, receipts and warranties safely in one place.</p></article>
 </div>
 </section>
 
