@@ -39,7 +39,7 @@ _flutter.buildConfig = {"engineRevision":"69c8c61792f04cc809dfef0c910414fb9afc06
 // Every production deployment supplies the Git commit as this value. Appending
 // it to the entrypoint prevents an already-open browser from reusing an older
 // Listooo web build after an update.
-const listoooWebRelease = 'bb32e57a6fb74181347002e085719fa0f8f00940';
+const listoooWebRelease = 'defc36bf4b4eb2c5dc36074e93b9f3ee6dfe2f58';
 for (const build of _flutter.buildConfig.builds) {
   if (build.mainJsPath) {
     build.mainJsPath = `${build.mainJsPath}?v=${listoooWebRelease}`;
