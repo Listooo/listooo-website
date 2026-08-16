@@ -36,7 +36,10 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"69c8c61792f04cc809dfef0c910414fb9afc06cd","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
 
-const listoooWebRelease = '20260804-adaptive-cards-header';
+// Every production deployment supplies the Git commit as this value. Appending
+// it to the entrypoint prevents an already-open browser from reusing an older
+// Listooo web build after an update.
+const listoooWebRelease = '218ea4ae6156c2da99a83b68b6895f3e6d0d645b';
 for (const build of _flutter.buildConfig.builds) {
   if (build.mainJsPath) {
     build.mainJsPath = `${build.mainJsPath}?v=${listoooWebRelease}`;

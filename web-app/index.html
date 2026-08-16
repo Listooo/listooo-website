@@ -48,7 +48,10 @@
     })();
 
     (function () {
-      var resetKey = 'listooo-sw-reset-20260804-adaptive-cards-header';
+      // The release-specific key runs this cleanup once after every deployment.
+      // Older Listooo versions registered a Flutter service worker, which can
+      // otherwise keep serving an outdated web app even after a new release.
+      var resetKey = 'listooo-sw-reset-218ea4ae6156c2da99a83b68b6895f3e6d0d645b';
       if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
         return;
       }
