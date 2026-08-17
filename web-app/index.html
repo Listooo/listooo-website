@@ -51,7 +51,7 @@
       // The release-specific key runs this cleanup once after every deployment.
       // Older Listooo versions registered a Flutter service worker, which can
       // otherwise keep serving an outdated web app even after a new release.
-      var resetKey = 'listooo-sw-reset-6a5b8122b6d7e9deb5b8355e5eb3fe48b4c61466';
+      var resetKey = 'listooo-sw-reset-7becf413eef68ef944bdbfa6fbb19dae746493c5';
       if (!('serviceWorker' in navigator) || window.localStorage.getItem(resetKey)) {
         return;
       }
